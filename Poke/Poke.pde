@@ -1,4 +1,4 @@
-float yCor = 150;
+float yCor = 0;
 float xCor = 300;
 float xCorWild = 400;
 float yCorWild = 200;
@@ -11,7 +11,7 @@ int cols, rows;
 boolean makeRe = false;
 
   public void setup(){
-   size(600,600);
+   size(1500,1500);
      //cols = width/videoScale;
   //rows = height/videoScale;
    //float grid = 50;
@@ -30,7 +30,7 @@ boolean makeRe = false;
   
   public void wildPokemon(){
     //  boolean makeRe = true;
-      if(yCor == 0 && xCor == 0 || xCor == 0){
+      if(yCor == 0 && xCor == 0){
           background(200);
           move = false;
           rect(xCorWild,yCorWild,40,40);
@@ -51,7 +51,7 @@ boolean makeRe = false;
     public void draw(){
           setup();
          background(100,255,255);
-        rect(xCor,yCor,40,10);
+        rect(xCor,yCor,200,200);
          wildPokemon();
          if(makeRe == true){
               rect(40,40,10,10);
@@ -84,20 +84,44 @@ boolean makeRe = false;
     if(move){
       if(key == CODED){
           if(keyCode == UP){
-              yCor -= 50;
+            if(yCor - 125 >= 0){
+              yCor -= 125;
+          }
+          else{
+            yCor = 0;
+          }
           }
           if(keyCode == DOWN){
-              yCor += 50;
+            if(yCor + 125 < 1300){
+              yCor += 125;
+              System.out.println(yCor);
+          }
+          else{
+            yCor = 1300;
+          }
           }
           if(keyCode == RIGHT){
-              xCor += 50;
+            if(xCor + 125 <= 1300){
+              xCor += 125;
+          }
+          else{
+              xCor = 1300;
+          }
           }
           if(keyCode == LEFT){
-              xCor -= 50;
+            if(xCor - 125 >= 0){
+              xCor -= 125;
           }
-      }
+          else{
+            xCor = 0;
+          }
+          }
+          }
+    }
   }
-  }
+  
+  
+  
       
   
   
