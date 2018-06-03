@@ -2,7 +2,7 @@ public class Red{
   PImage front,back,left,right;
   float x,y;
   public Red(float x,float y){
-    front = loadImage("Images/Red.png");
+    front = loadImage("Images/back.png");
     this.x = x;
     this.y = y;
   }
