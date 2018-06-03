@@ -4,26 +4,16 @@ float xCorWild = 400;
 float yCorWild = 200;
 boolean move = true;
 int videoScale = 50;
-float battleWidth = 50;
-float battleHeight = 40;
-// Number of columns and rows in our system
-int cols, rows;
+float battleWidth = 125;
+float battleHeight = 100;
+float battleHighlight = 51;
 boolean makeRe = false;
-
+boolean battle = false;
+boolean battleClicked = false;
   public void setup(){
    size(1500,1500);
-     //cols = width/videoScale;
-  //rows = height/videoScale;
-   //float grid = 50;
-   //float width = 600;
-   //float height = 300;
-   //for (int i = 0; i < width; i+=grid) {
-   //   line (i, 0, i, height);
-   //   }
-   //for (int i = 0; i < height; i+=grid) {
-   //   line (0, i, width, i);
-   // }
-  }// 
+    
+  }
     
 
   
@@ -33,12 +23,29 @@ boolean makeRe = false;
       if(yCor == 0 && xCor == 0){
           background(200);
           move = false;
-          rect(xCorWild,yCorWild,40,40);
-          rect(250,200,battleWidth,battleHeight);
+          if(battleClicked == true){
+          battle = false;
+          }
+          else{
+            battle = true;
+          }
+         // rect(xCorWild,yCorWild,100,100);
+         
+        //  rect(250,200,battleWidth,battleHeight);
+        if(battle){
+          if(mouseX >= 250 && mouseX < 250 + battleWidth && mouseY >=200 && mouseY < 200 + battleHeight){
+            fill(color(51));
+          }
+          else{
+            fill(color(255));
+          }
+        }
           if(mousePressed){
             if(mouseX >= 250 && mouseX < 250 + battleWidth && mouseY >= 200 && mouseY < 200 + battleHeight){
            //   rect(40,40,10,10);
            makeRe = true;
+           
+           battleClicked = true;
          //  background(100);
             }
           }
@@ -54,29 +61,14 @@ boolean makeRe = false;
         rect(xCor,yCor,200,200);
          wildPokemon();
          if(makeRe == true){
-              rect(40,40,10,10);
+              rect(650,650,100,100);
+              rect(850,850,100,100);
+              rect(850,650,100,100);
+              rect(650,850,100,100);
          }
-         /*
-          for (int i = 0; i < cols; i++) {
-    // Begin loop for rows
-    for (int j = 0; j < rows; j++) {
-
-      // Scaling up to draw a rectangle at (x,y)
-      int x = i*videoScale;
-      int y = j*videoScale;
-      fill(255);
-      stroke(0);
-      // For every column and row, a rectangle is drawn at an (x,y) location scaled and sized by videoScale.
-      if(x == xCor && y == yCor){
-           rect(xCor,yCor,40,10);
-      }
-      else{
-      rect(x, y, videoScale, videoScale);
-      }
-    }
-    }
-  }
-*/
+         if(battle){
+           rect(250,200,battleWidth,battleHeight);
+         }
 }
     
 
@@ -100,7 +92,7 @@ boolean makeRe = false;
             yCor = 1300;
           }
           }
-          if(keyCode == RIGHT){
+                    if(keyCode == RIGHT){
             if(xCor + 125 <= 1300){
               xCor += 125;
           }
@@ -118,10 +110,36 @@ boolean makeRe = false;
           }
           }
     }
-  }
+    }
+  
   
   
   
       
   
-  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
