@@ -24,6 +24,10 @@ public class Pokemons{
     }  
   }
   
+  public int getIndexNum(){
+    return indexNum;
+  }
+  
   public void display(){
     image(front[150],10,10);  //only use numbers from 0-150,151-160 is just blank pic
     image(back[150],90,90);
