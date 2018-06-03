@@ -3,7 +3,8 @@ float yCor = 150;
 float xCor = 300;
 //float left = 300;
 Red x;
-int leftOrRight;
+int direction;
+int leftOrRight = 0;
   public void setup(){
     size(600,300);
   }
@@ -16,19 +17,47 @@ int leftOrRight;
 
   void keyPressed(){
           if(keyCode == UP){
+            if (leftOrRight == 0){
               direction = 13;
+              leftOrRight = 1;
+            }
+            else {
+              direction = 15;
+              leftOrRight = 0;
+            }
               yCor -= 10;
           }
           if(keyCode == DOWN){
+            if (leftOrRight == 0){
               direction = 1;
+              leftOrRight = 1;
+            }
+            else {
+              direction = 3;
+              leftOrRight = 0;
+            }
               yCor += 10;
           }
           if(keyCode == RIGHT){
+            if (leftOrRight == 0){
               direction = 9;
+              leftOrRight = 1;
+            }
+            else {
+              direction = 11;
+              leftOrRight = 0;
+            }
               xCor += 10;
           }
           if(keyCode == LEFT){
+            if (leftOrRight == 0){
               direction = 5;
+              leftOrRight = 1;
+            }
+            else {
+              direction = 7;
+              leftOrRight = 0;
+            }
               xCor -= 10;
           }
   }
