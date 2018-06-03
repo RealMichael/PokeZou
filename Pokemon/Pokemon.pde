@@ -3,6 +3,7 @@ float yCor = 150;
 float xCor = 300;
 //float left = 300;
 Red x;
+Pokemons b;
 int direction;
 int leftOrRight = 0;
   public void setup(){
@@ -12,6 +13,8 @@ int leftOrRight = 0;
     public void draw(){
          background(255);
          x = new Red(xCor,yCor);
+         b = new Pokemons(10);
+         b.display();
          x.display(direction);
     }
 
