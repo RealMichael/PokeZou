@@ -10,9 +10,13 @@ float battleHighlight = 51;
 boolean makeRe = false;
 boolean battle = false;
 boolean battleClicked = false;
+PImage image; 
+
   public void setup(){
    size(1500,1500);
-    
+  image = loadImage("Battlefield.png");
+
+   image.resize(1500,1500);
   }
     
 
@@ -21,7 +25,7 @@ boolean battleClicked = false;
   public void wildPokemon(){
     //  boolean makeRe = true;
       if(yCor == 0 && xCor == 0){
-          background(200);
+          //background(200);
           move = false;
           if(battleClicked == true){
           battle = false;
@@ -49,6 +53,9 @@ boolean battleClicked = false;
          //  background(100);
             }
           }
+          if(battleClicked){
+            background(image);
+          }
         
           
       }
@@ -57,8 +64,17 @@ boolean battleClicked = false;
   
     public void draw(){
           setup();
-         background(100,255,255);
+        //  if(battleClicked == true){
+       //  background(image);
+        //  background(200);
+         // }
+         // else{
+           if(battleClicked == false){
+        background(100,255,255);
+           }
+          if(battle == false){
         rect(xCor,yCor,200,200);
+          }
          wildPokemon();
          if(makeRe == true){
               rect(650,650,100,100);
@@ -70,6 +86,7 @@ boolean battleClicked = false;
            rect(250,200,battleWidth,battleHeight);
          }
 }
+    
     
 
   void keyPressed(){
