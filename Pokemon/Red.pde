@@ -14,7 +14,7 @@ public class Red{
     for (int i = 0;i < xNum;i++){
       for (int c = 0;c < yNum;c++){
         Sprites[index] = spriteSheet.get(c * spriteWidth,i * spriteHeight,spriteWidth,spriteHeight);
-        Sprites[index].resize(25,35);
+        Sprites[index].resize(16,25);
         index++;
       }
     }
@@ -28,6 +28,14 @@ public class Red{
   
   public void setY(int y){
     this.y = y;
+  }
+  
+  public float getX(){
+    return x;
+  }
+  
+  public float getY(){
+    return y;
   }
   
   public void setCurrent(int n){

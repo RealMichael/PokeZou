@@ -1,21 +1,27 @@
-float yCor = 150;
+float yCor = 320;
 //float down = 150;
-float xCor = 300;
+float xCor = 320;
 //float left = 300;
 Red x;
 Pokemons b;
 int direction;
 int leftOrRight = 0;
+PImage overWorld;
   public void setup(){
-    size(600,300);
+    size(768,640);
+    overWorld = loadImage("Images/map.png");
   }
   
     public void draw(){
-         background(255);
+         background(0);
          x = new Red(xCor,yCor);
-         b = new Pokemons(10);
-         b.display();
+         pushMatrix();
+         translate(width / 2,height / 2);
+         scale(2.5);
+         translate(x.getX()*-1-(16/2),x.getY()*-1-(16/2));
+         image(overWorld,0,0);
          x.display(direction);
+         popMatrix();
     }
 
   void keyPressed(){
@@ -28,7 +34,7 @@ int leftOrRight = 0;
               direction = 15;
               leftOrRight = 0;
             }
-              yCor -= 10;
+              yCor -= 16;
           }
           if(keyCode == DOWN){
             if (leftOrRight == 0){
@@ -39,7 +45,7 @@ int leftOrRight = 0;
               direction = 3;
               leftOrRight = 0;
             }
-              yCor += 10;
+              yCor += 16;
           }
           if(keyCode == RIGHT){
             if (leftOrRight == 0){
@@ -50,7 +56,7 @@ int leftOrRight = 0;
               direction = 11;
               leftOrRight = 0;
             }
-              xCor += 10;
+              xCor += 16;
           }
           if(keyCode == LEFT){
             if (leftOrRight == 0){
@@ -61,7 +67,7 @@ int leftOrRight = 0;
               direction = 7;
               leftOrRight = 0;
             }
-              xCor -= 10;
+              xCor -= 16;
           }
   }
   
