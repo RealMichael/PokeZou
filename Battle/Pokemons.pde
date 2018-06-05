@@ -2,7 +2,11 @@
 public class Pokemons{
   PImage[] back;
   PImage[] front;
-  int current,indexNum,health,damage;
+  int current,indexNum,damage,health;
+  boolean rand = true;
+  
+  
+    
   //String[] moves;
   String type;
   String name;
@@ -14,7 +18,11 @@ public class Pokemons{
   //Scanner sc = new Scanner("pokedex.csv");
   
   public Pokemons(int num){
-    health = 1000;
+   if(rand){
+   health = ((int)(Math.random() * (500)) + 1000);
+  rand = false;
+  }
+    
     int widthNum = 16;
     int heightNum = 10;
     int total = widthNum * heightNum;

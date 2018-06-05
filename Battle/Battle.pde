@@ -1,6 +1,8 @@
 PImage image;
 int battleLen = 150;
 int battleWid = 75;
+int healthRand = ((int)(Math.random() * (500)) + 1000);
+int healthRandP = ((int)(Math.random() * (500)) + 1000);
 int width = 480;
 int length = 800;
 boolean battleClicked = false;
@@ -149,13 +151,15 @@ public void draw(){
   textSize(20);
  // textAlign(CENTER,CENTER);
   text(starter.getName(),125,375,150,75);
-  text("Health:" + "  " + wild.getHealth(),125,395,150,75);
+  starter.setHealth(healthRandP);
+  text("Health:" + "  " + starter.getHealth(),125,395,150,75);
  
  
   wild.display(600,100);
   fill(0);
   textSize(20);
   text(wild.getName(),630,70,150,75);
+  wild.setHealth(healthRand);
   text("Health:" + "  " + wild.getHealth(),630,90,150,75);
 }
   
