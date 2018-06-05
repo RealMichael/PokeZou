@@ -4,6 +4,8 @@ int cols = 48;
 int tile = 16;
 int listTile[][] = new int [cols][rows];
 //1 is walls
+int mode;
+String save[] = new String[0];
 
 void setup(){
   size(768,640);
@@ -49,4 +51,17 @@ void paint(){
        }
      }
    }
+}
+
+void keyPressed(){
+  if (key == 's'){
+    for (int i = 0;i < cols;i++){
+      for (int c = 0;c < rows;c++){
+        if (listTile[i][c] == 1){
+          save = append(save,listTile[i][c] + "," + i + "," + c); 
+        }
+      }
+    }
+  }
+  saveStrings("save.txt",save);
 }
