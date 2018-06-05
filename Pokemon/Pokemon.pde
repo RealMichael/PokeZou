@@ -10,7 +10,10 @@ int leftOrRight = 0;
 PImage overWorld;
   public void setup(){
     size(768,640);
+    frameRate(120);
+    noSmooth();
     overWorld = loadImage("Images/map.png");
+    fileReading();
   }
   
     public void draw(){
@@ -23,7 +26,6 @@ PImage overWorld;
          image(overWorld,0,0);
          x.display(direction);
          popMatrix();
-         fileReading();
     }
     
     void fileReading(){
@@ -35,8 +37,17 @@ PImage overWorld;
       }
     }
 
+  boolean collisionWalls(int direction){
+    for (int i = 0;i < w.length;i ++){
+      if (w[i].checkWall(x.getX(),x.getY(),direction)){
+        return true;
+      }
+    }
+    return false;
+  }
+  
   void keyPressed(){
-          if(keyCode == UP){
+          if(keyCode == UP && !collisionWalls(0)){
             if (leftOrRight == 0){
               direction = 13;
               leftOrRight = 1;
@@ -47,7 +58,7 @@ PImage overWorld;
             }
               yCor -= 16;
           }
-          if(keyCode == DOWN){
+          if(keyCode == DOWN && !collisionWalls(2)){
             if (leftOrRight == 0){
               direction = 1;
               leftOrRight = 1;
@@ -58,7 +69,7 @@ PImage overWorld;
             }
               yCor += 16;
           }
-          if(keyCode == RIGHT){
+          if(keyCode == RIGHT && !collisionWalls(3)){
             if (leftOrRight == 0){
               direction = 9;
               leftOrRight = 1;
@@ -69,7 +80,7 @@ PImage overWorld;
             }
               xCor += 16;
           }
-          if(keyCode == LEFT){
+          if(keyCode == LEFT && !collisionWalls(1)){
             if (leftOrRight == 0){
               direction = 5;
               leftOrRight = 1;

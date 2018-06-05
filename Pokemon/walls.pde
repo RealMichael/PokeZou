@@ -15,7 +15,7 @@ public class walls{
       return false;
     }
     else if (direction == 1){
-      if (y == yCor && x == (xCor + 16){
+      if (y == yCor && x == (xCor + 16)){
         return true;
       }
       return false;
@@ -32,5 +32,6 @@ public class walls{
       }
       return false;
     }
+    return false;
   }
 }
