@@ -8,6 +8,7 @@ public class Pokemons{
     int widthNum = 16;
     int heightNum = 10;
     int total = widthNum * heightNum;
+    indexNum = num;
     back = new PImage[total];
     front = new PImage[total];
     PImage frontSprite = loadImage("Images/front.png");
@@ -28,8 +29,11 @@ public class Pokemons{
     return indexNum;
   }
   
-  public void display(){
-    image(front[150],10,10);  //only use numbers from 0-150,151-160 is just blank pic
-    image(back[150],90,90);
+  public void displayBack(int x,int y){
+    image(back[indexNum],x,y);
+  }
+  
+  public void display(int x,int y){
+    image(front[indexNum],x,y);  //only use numbers from 0-150,151-160 is just blank pic
   }
 }
