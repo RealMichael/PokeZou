@@ -13,14 +13,26 @@ public void setup(){
  
    if(battleClicked == false){
   rectMode(CENTER);
-  fill(255);
+  if(mouseX >= (length / 2) - (battleLen / 2) && mouseX < (length / 2) - (battleLen / 2) + battleLen && mouseY >= (width / 2) - (battleWid / 2) && mouseY <  (width / 2) - (battleWid / 2) + battleWid){
+      
+  fill(200);
+  }
+  else{
+    fill(255);
+  }
   rect(400,240,150,75);
   fill(0);
   textSize(40);
   textAlign(CENTER,CENTER);
   text("BATTLE",400,240,150,75);
   
+  
+  if(mOver(400,300,100,40)){
+      fill(200);
+  }
+  else{
   fill(255);
+  }
   rect(400,300,100,40);
   fill(0);
   textSize(20);
@@ -95,7 +107,7 @@ public void mClick(){
   //BATTLE BUTTON
   if(battleClicked == false){
   if(mouseX >= (length / 2) - (battleLen / 2) && mouseX < (length / 2) - (battleLen / 2) + battleLen && mouseY >= (width / 2) - (battleWid / 2) && mouseY <  (width / 2) - (battleWid / 2) + battleWid){
-      fill(200);
+      fill(100);
   }
   }
   if(battleClicked == false){
