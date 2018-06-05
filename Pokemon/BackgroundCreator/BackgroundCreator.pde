@@ -3,7 +3,7 @@ int rows = 40;
 int cols = 48;
 int tile = 16;
 int listTile[][] = new int [cols][rows];
-//1 is walls
+//1 is wallsgit st
 int mode;
 String save[] = new String[0];
 
