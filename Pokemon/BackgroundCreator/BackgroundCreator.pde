@@ -21,9 +21,21 @@ void draw(){
     }
   }
   paint();
-  
-  if (mouseButton == LEFT){
+  stroke(0);
+  fill(200);
+  if (mouseButton == LEFT && checkBoard(mouseX,mouseY)){
     listTile[int(mouseX / tile)][int(mouseY / tile)] = 1;
+  }
+}
+
+boolean checkBoard(float xCor,float yCor){
+  int tx = int(xCor / tile);
+  int ty = int(yCor / tile);
+  if (tx >= 0 && tx < cols && ty >= 0 && ty < rows){
+    return true;
+  }
+  else {
+    return false;
   }
 }
 
