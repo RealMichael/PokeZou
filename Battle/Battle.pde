@@ -137,6 +137,7 @@ public void mClick(){
 }
 public void draw(){
   if(mousePressed){
+    System.out.println(starter.getTable());
       System.out.println("xCor" + mouseX + "   " + "yCor" + mouseY);
   }
  // background(image);
@@ -144,7 +145,18 @@ public void draw(){
     fill(255);
   mClick();
  starter.displayBack(100,400);
+ fill(0);
+  textSize(20);
+ // textAlign(CENTER,CENTER);
+  text(starter.getName(),125,375,150,75);
+  text("Health:" + "  " + wild.getHealth(),125,395,150,75);
+ 
+ 
   wild.display(600,100);
+  fill(0);
+  textSize(20);
+  text(wild.getName(),630,70,150,75);
+  text("Health:" + "  " + wild.getHealth(),630,90,150,75);
 }
   
   
