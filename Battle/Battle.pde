@@ -4,9 +4,17 @@ int battleWid = 75;
 int width = 480;
 int length = 800;
 boolean battleClicked = false;
+Pokemons starter;
+Pokemons wild;
+int numb = ((int)(Math.random() * (151)));
+//= new Pokemons(0);
 
 public void setup(){
-  surface.setResizable(true);
+starter = new Pokemons(24);
+wild = new Pokemons(numb);
+//x.resize(200,200);
+  //x.displayBack(200,200);
+  //surface.setResizable(true);
   size(800,480);
   image = loadImage("Battlefield2.png");
   background(image);
@@ -88,6 +96,7 @@ public void setup(){
       text("Tackle",470,385,100,50);
       
   }
+  
 }
   
 public boolean mOver(int xCor,int yCor,int length,int width){
@@ -134,6 +143,8 @@ public void draw(){
     setup();
     fill(255);
   mClick();
+ starter.displayBack(100,400);
+  wild.display(600,100);
 }
   
   

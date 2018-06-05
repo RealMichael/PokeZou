@@ -28,9 +28,15 @@ public class Pokemons{
   public int getIndexNum(){
     return indexNum;
   }
-  
+   
+ /* public void resize(int x, int y){
+    image.resize(x,y);
+  }
+  */
   public void displayBack(int x,int y){
+   // image.resize(700,400);
     image(back[indexNum],x,y);
+   // image.resize(400,400);
   }
   
   public void display(int x,int y){
