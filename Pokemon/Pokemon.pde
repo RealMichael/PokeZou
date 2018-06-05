@@ -23,10 +23,17 @@ PImage overWorld;
          image(overWorld,0,0);
          x.display(direction);
          popMatrix();
-         
+         fileReading();
     }
     
-    
+    void fileReading(){
+      String[] o = loadStrings("collision.txt");
+      String[] temp = new String[0];
+      for (int i = 0;i < o.length;i++){
+         temp = split(o[i],",");
+         w = (walls[]) append(w, new walls(float(temp[1]) * 16,float(temp[2]) * 16));
+      }
+    }
 
   void keyPressed(){
           if(keyCode == UP){
