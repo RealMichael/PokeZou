@@ -1,151 +1,151 @@
-Bulbasaur,Grass
-Ivysaur,Grass
-Venusaur,Grass
-Charmander,Fire
-Charmeleon,Fire
-Charizard,Fire
-Squirtle,Water
-Wartortle,Water
-Blastoise,Water
-Caterpie,Bug
-Metapod,Bug
-Butterfree,Bug
-Weedle,Bug
-Kakuna,Bug
-Beedrill,Bug
-Pidgey,Normal
-Pidgeotto,Normal
-Pidgeot,Normal
-Rattata,Normal
-Raticate,Normal
-Spearow,Normal
-Fearow,Normal
-Ekans,Poison
-Arbok,Poison
-Pikachu,Electric
-Raichu,Electric
-Sandshrew,Ground
-Sandslash,Ground
-Nidoran,Poison
-Nidorina,Poison
-Nidoqueen,Poison
-Nidoran,Poison
-Nidorino,Poison
-Nidoking,Poison
-Clefairy,Fairy
-Clefable,Fairy
-Vulpix,Fire
-Ninetales,Fire
-Jigglypuff,Normal
-Wigglytuff,Normal
-Zubat,Poison
-Golbat,Poison
-Oddish,Grass
-Gloom,Grass
-Vileplume,Grass
-Paras,Bug
-Parasect,Bug
-Venonat,Bug
-Venomoth,Bug
-Diglett,Ground
-Dugtrio,Ground
-Meowth,Normal
-Persian,Normal
-Psyduck,Water
-Golduck,Water
-Mankey,Fighting
-Primeape,Fighting
-Growlithe,Fire
-Arcanine,Fire
-Poliwag,Water
-Poliwhirl,Water
-Poliwrath,Water
-Abra,Psychic
-Kadabra,Psychic
-Alakazam,Psychic
-Machop,Fighting
-Machoke,Fighting
-Machamp,Fighting
-Bellsprout,Grass
-Weepinbell,Grass
-Victreebel,Grass
-Tentacool,Water
-Tentacruel,Water
-Geodude,Rock
-Graveler,Rock
-Golem,Rock
-Ponyta,Fire
-Rapidash,Fire
-Slowpoke,Water
-Slowbro,Water
-Magnemite,Electric
-Magneton,Electric
-Farfetch'd,Normal
-Doduo,Normal
-Dodrio,Normal
-Seel,Water
-Dewgong,Water
-Grimer,Poison
-Muk,Poison
-Shellder,Water
-Cloyster,Water
-Gastly,Ghost
-Haunter,Ghost
-Gengar,Ghost
-Onix,Rock
-Drowzee,Psychic
-Hypno,Psychic
-Krabby,Water
-Kingler,Water
-Voltorb,Electric
-Electrode,Electric
-Exeggcute,Grass
-Exeggutor,Grass
-Cubone,Ground
-Marowak,Ground
-Hitmonlee,Fighting
-Hitmonchan,Fighting
-Lickitung,Normal
-Koffing,Poison
-Weezing,Poison
-Rhyhorn,Ground
-Rhydon,Ground
-Chansey,Normal
-Tangela,Grass
-Kangaskhan,Normal
-Horsea,Water
-Seadra,Water
-Goldeen,Water
-Seaking,Water
-Staryu,Water
-Starmie,Water
-Mr. Mime,Psychic
-Scyther,Bug
-Jynx,Ice
-Electabuzz,Electric
-Magmar,Fire
-Pinsir,Bug
-Tauros,Normal
-Magikarp,Water
-Gyarados,Water
-Lapras,Water
-Ditto,Normal
-Eevee,Normal
-Vaporeon,Water
-Jolteon,Electric
-Flareon,Fire
-Porygon,Normal
-Omanyte,Rock
-Omastar,Rock
-Kabuto,Rock
-Kabutops,Rock
-Aerodactyl,Rock
-Snorlax,Normal
-Articuno,Ice
-Zapdos,Electric
-Moltres,Fire
-Dratini,Dragon
-Dragonair,Dragon
-Dragonite,Dragon
-Mewtwo,Psychic
-Mew,Psychic
+Bulbasaur,Grass,Overgrow
+Ivysaur,Grass,Overgrow
+Venusaur,Grass,Overgow
+Charmander,Fire,Blaze
+Charmeleon,Fire,Blaze
+Charizard,Fire,Blaze
+Squirtle,Water,Torrent
+Wartortle,Water,Torrent
+Blastoise,Water,Torrent
+Caterpie,Bug,Dust
+Metapod,Bug,Dust
+Butterfree,Bug,Dust
+Weedle,Bug,Dust
+Kakuna,Bug,Dust
+Beedrill,Bug,Swarm
+Pidgey,Normal,Peck
+Pidgeotto,Normal,Peck
+Pidgeot,Normal,Peck
+Rattata,Normal,Tackle
+Raticate,Normal,Tackle
+Spearow,Normal,Slash
+Fearow,Normal,Slash
+Ekans,Poison,Poison
+Arbok,Poison,Poison
+Pikachu,Electric,Thunderbolt
+Raichu,Electric,Thunderbolt
+Sandshrew,Ground,Sandstorm
+Sandslash,Ground,Sandstorm
+Nidoran,Poison,Poison
+Nidorina,Poison,Poison
+Nidoqueen,Poison,Poison
+Nidoran,Poison,Poison
+Nidorino,Poison,Poison
+Nidoking,Poison,Poison
+Clefairy,Fairy,Charm
+Clefable,Fairy,Charm
+Vulpix,Fire,Blaze
+Ninetales,Fire,Blaze
+Jigglypuff,Normal,Charm
+Wigglytuff,Normal,Charm
+Zubat,Poison,Toxic
+Golbat,Poison,Toxic
+Oddish,Grass,Chlorophyll
+Gloom,Grass,Chlorophyll
+Vileplume,Grass,Chlorophyll
+Paras,Bug,Spore
+Parasect,Bug,Spore
+Venonat,Bug,Spore
+Venomoth,Bug,Spore
+Diglett,Ground,Dig
+Dugtrio,Ground,Dig
+Meowth,Normal,Claw
+Persian,Normal,Claw
+Psyduck,Water,Pump
+Golduck,Water,Pump
+Mankey,Fighting,Punch
+Primeape,Fighting,Punch
+Growlithe,Fire,Fire Fang
+Arcanine,Fire,Fire Fang
+Poliwag,Water,Aqua Punch
+Poliwhirl,Water,Aqua Punch
+Poliwrath,Water,Aqua Punch
+Abra,Psychic,Psychic
+Kadabra,Psychic,Psychic
+Alakazam,Psychic,Psychic
+Machop,Fighting,Fury Fist
+Machoke,Fighting,Fury Fist
+Machamp,Fighting,Fury Fist
+Bellsprout,Grass,Solar Beam
+Weepinbell,Grass,Solar Beam
+Victreebel,Grass,Solar Beam
+Tentacool,Water,Water Beam
+Tentacruel,Water,Water Beam
+Geodude,Rock,Rock Smash
+Graveler,Rock,Rock Smash
+Golem,Rock,Rock Smash
+Ponyta,Fire,Fire Blast
+Rapidash,Fire,Fire Blast
+Slowpoke,Water,Water Pump
+Slowbro,Water,Water Pump
+Magnemite,Electric,Water Pump
+Magneton,Electric,Thunder
+Farfetch'd,Normal,Club
+Doduo,Normal,Strike
+Dodrio,Normal,Strike
+Seel,Water,Hydro Pump
+Dewgong,Water,Hydro Pump
+Grimer,Poison,Sludge Bomb
+Muk,Poison,Sludge Bomb
+Shellder,Water,Water Gun
+Cloyster,Water,Water Gun
+Gastly,Ghost,Soul Grasp
+Haunter,Ghost,Soul Grasp
+Gengar,Ghost,Soul Grasp
+Onix,Rock,Rockslide
+Drowzee,Psychic,Psychic
+Hypno,Psychic,Psychic
+Krabby,Water,Water Claw
+Kingler,Water,Water Claw
+Voltorb,Electric,Orb Fall
+Electrode,Electric,Orb Fall
+Exeggcute,Grass,Egg Bomb
+Exeggutor,Grass,Egg Bomb
+Cubone,Ground,Bone Throw
+Marowak,Ground,Bone Throw
+Hitmonlee,Fighting,Kick
+Hitmonchan,Fighting,Kick
+Lickitung,Normal,Lick
+Koffing,Poison,Poison
+Weezing,Poison,Poison
+Rhyhorn,Ground,Horn Attack
+Rhydon,Ground,Horn Attack
+Chansey,Normal,Sit
+Tangela,Grass,Grass Punch
+Kangaskhan,Normal,Punch
+Horsea,Water,Aqua Tail
+Seadra,Water,Aqua Tail
+Goldeen,Water,Aqua Tail
+Seaking,Water,Aqua Tail
+Staryu,Water,Water Pulse
+Starmie,Water,Water Pulse
+Mr. Mime,Psychic,Psychic
+Scyther,Bug,Scissor
+Jynx,Ice,Ice Beam
+Electabuzz,Electric,Electric Bolt
+Magmar,Fire,Fire Breathe
+Pinsir,Bug,Horn Attack
+Tauros,Normal,Hit
+Magikarp,Water,Flop
+Gyarados,Water,Hydro Pump
+Lapras,Water,Ice Beam
+Ditto,Normal,Tackle
+Eevee,Normal,Tackle
+Vaporeon,Water,Water Pump
+Jolteon,Electric,Thunder
+Flareon,Fire,Blaze
+Porygon,Normal,Shift
+Omanyte,Rock,Rockfall
+Omastar,Rock,Rockfall
+Kabuto,Rock,Slash
+Kabutops,Rock,Slash
+Aerodactyl,Rock,Sky Attack
+Snorlax,Normal,Sit
+Articuno,Ice,Blizzard
+Zapdos,Electric,Thunder
+Moltres,Fire,Blaze
+Dratini,Dragon,Tackle
+Dragonair,Dragon,Dragon Tail
+Dragonite,Dragon,Dragon Pulse
+Mewtwo,Psychic,Psychic
+Mew,Psychic,Overpower

@@ -3,9 +3,10 @@ public class Pokemons{
   PImage[] back;
   PImage[] front;
   int current,indexNum,health,damage;
-  String[] moves;
+  //String[] moves;
   String type;
   String name;
+  String move;
   Table table = loadTable("pokedex.csv");
   
   //ArrayList<String[]> data = new ArrayList<String[]>();
@@ -22,6 +23,7 @@ public class Pokemons{
     front = new PImage[total];
     type = table.getString(num,1);
     name = table.getString(num,0);
+    move = table.getString(num,2);
     PImage frontSprite = loadImage("Images/front.png");
     PImage backSprite = loadImage("Images/back.png");
     int spriteWidth = frontSprite.width / widthNum; //front and back sprites have same width and height
@@ -39,7 +41,9 @@ public class Pokemons{
   public int getIndexNum(){
     return indexNum;
   }
-  
+  public String getMove(){
+    return move;
+  }
   public String getTable(){
      return table.getString(150,0);
      
