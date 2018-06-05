@@ -9,6 +9,7 @@ boolean battleClicked = false;
 Pokemons starter;
 Pokemons wild;
 int numb = ((int)(Math.random() * (151)));
+String textBox = "Pick A Move For Pikachu To Use!";
 //= new Pokemons(0);
 
 public void setup(){
@@ -97,6 +98,12 @@ wild = new Pokemons(numb);
       textSize(20);
       text("Tackle",470,385,100,50);
       
+      fill(255);
+      //rectMode(CENTER);
+      rect(400,440,350,35);
+      fill(0);
+      textSize(15);
+      text(textBox,400,440,350,35);
   }
   
 }
