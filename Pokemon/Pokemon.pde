@@ -5,9 +5,15 @@ float xCor = 320;
 Red x;
 Pokemons b;
 walls[] w = new walls[0];
+NPC[] n = new NPC[0];
 int direction;
 int leftOrRight = 0;
 PImage overWorld;
+PImage npcOne;
+PImage npcTwo;
+PImage npcThree;
+PImage npcFour;
+PImage npcFive;
   public void setup(){
     size(768,640);
     frameRate(120);
@@ -34,6 +40,12 @@ PImage overWorld;
       for (int i = 0;i < o.length;i++){
          temp = split(o[i],",");
          w = (walls[]) append(w, new walls(float(temp[1]) * 16,float(temp[2]) * 16));
+      }
+      String[] NPC = loadStrings("npc.txt");
+      String[] tempTwo = new String[0];
+      for (int i = 0;i < NPC.length;i++){
+        tempTwo = split(NPC[i],",");
+        n = (NPC[]) append(n,new NPC(float(tempTwo[1]) * 16,float(tempTwo[2]) * 16));
       }
     }
 
