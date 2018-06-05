@@ -47,7 +47,7 @@ PImage overWorld;
   }
   
   void keyPressed(){
-          if(keyCode == UP && !collisionWalls(0)){
+          if(keyCode == UP && !collisionWalls(2)){
             if (leftOrRight == 0){
               direction = 13;
               leftOrRight = 1;
@@ -58,7 +58,7 @@ PImage overWorld;
             }
               yCor -= 16;
           }
-          if(keyCode == DOWN && !collisionWalls(2)){
+          else if(keyCode == DOWN && !collisionWalls(0)){
             if (leftOrRight == 0){
               direction = 1;
               leftOrRight = 1;
@@ -69,7 +69,7 @@ PImage overWorld;
             }
               yCor += 16;
           }
-          if(keyCode == RIGHT && !collisionWalls(3)){
+          else if(keyCode == RIGHT && !collisionWalls(3)){
             if (leftOrRight == 0){
               direction = 9;
               leftOrRight = 1;
@@ -80,7 +80,7 @@ PImage overWorld;
             }
               xCor += 16;
           }
-          if(keyCode == LEFT && !collisionWalls(1)){
+          else if(keyCode == LEFT && !collisionWalls(1)){
             if (leftOrRight == 0){
               direction = 5;
               leftOrRight = 1;

@@ -2,6 +2,7 @@ public class Red{
   float x,y;
   int current;
   PImage[] Sprites;
+  PImage test;
   public Red(float x,float y){
     int xNum = 4;
     int yNum = 4;
@@ -14,7 +15,7 @@ public class Red{
     for (int i = 0;i < xNum;i++){
       for (int c = 0;c < yNum;c++){
         Sprites[index] = spriteSheet.get(c * spriteWidth,i * spriteHeight,spriteWidth,spriteHeight);
-        Sprites[index].resize(16,25);
+        Sprites[index].resize(16,18);
         index++;
       }
     }
@@ -56,5 +57,7 @@ public class Red{
     
   public void display(int d){
     image(Sprites[d],x,y);
+    x = round(x);
+    y = round(y);
   }
 }
