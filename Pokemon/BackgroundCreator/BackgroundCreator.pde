@@ -26,7 +26,7 @@ void draw(){
   stroke(0);
   fill(200);
   if (mouseButton == LEFT && checkBoard(mouseX,mouseY)){
-    listTile[int(mouseX / tile)][int(mouseY / tile)] = 1;
+    listTile[int(mouseX / tile)][int(mouseY / tile)] = mode;
   }
 }
 
@@ -49,6 +49,14 @@ void paint(){
          fill(0,0,0,100);
          rect(i * tile,c * tile,tile,tile);
        }
+       else if (listTile[i][c] == 2){
+         fill(255,0,0,100);
+         rect(i * tile,c * tile,tile,tile);
+       }
+       else if (listTile[i][c] == 3){
+         fill(0,255,0,100);
+         rect(i * tile,c * tile,tile,tile);
+       }
      }
    }
 }
@@ -57,11 +65,17 @@ void keyPressed(){
   if (key == 's'){
     for (int i = 0;i < cols;i++){
       for (int c = 0;c < rows;c++){
-        if (listTile[i][c] == 1){
+        if (listTile[i][c] != 0){
           save = append(save,listTile[i][c] + "," + i + "," + c); 
         }
       }
     }
+  }
+  if (key == 'q'){
+    mode -= 1;
+  }
+  if (key == 'e'){
+    mode += 1;
   }
   saveStrings("save.txt",save);
 }

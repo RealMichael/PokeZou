@@ -9,11 +9,6 @@ NPC[] n = new NPC[0];
 int direction;
 int leftOrRight = 0;
 PImage overWorld;
-PImage npcOne;
-PImage npcTwo;
-PImage npcThree;
-PImage npcFour;
-PImage npcFive;
   public void setup(){
     size(768,640);
     frameRate(120);
@@ -25,12 +20,14 @@ PImage npcFive;
     public void draw(){
          background(0);
          x = new Red(xCor,yCor);
+         n[0] = new NPC(100,100);
          pushMatrix();
          translate(width / 2,height / 2);
          scale(2.5);
          translate(x.getX()*-1-(16/2),x.getY()*-1-(16/2));
          image(overWorld,0,0);
          x.display(direction);
+         n[0].display();
          popMatrix();
     }
     
@@ -119,4 +116,5 @@ PImage npcFive;
               direction = 4;
           }
   }
+  
   
