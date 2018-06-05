@@ -4,6 +4,7 @@ float xCor = 320;
 //float left = 300;
 Red x;
 Pokemons b;
+walls[] w = new walls[0];
 int direction;
 int leftOrRight = 0;
 PImage overWorld;
@@ -22,7 +23,10 @@ PImage overWorld;
          image(overWorld,0,0);
          x.display(direction);
          popMatrix();
+         
     }
+    
+    
 
   void keyPressed(){
           if(keyCode == UP){
