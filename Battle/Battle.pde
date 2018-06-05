@@ -82,7 +82,7 @@ public boolean mOver(int xCor,int yCor,int length,int width){
   }
 }
     
-  
+
 
 public void mClick(){
   
@@ -99,8 +99,15 @@ public void mClick(){
       }
   }
   }
+  
+  if(battleClicked == true){
+      if(mousePressed){
+         if(mOver(330,315,100,50) || mOver(470,315,100,50) || mOver(330,385,100,50) || mOver(470,385,100,50)){
+           battleClicked = false;
+         }
+      }
 }
-
+}
 public void draw(){
   if(mousePressed){
       System.out.println("xCor" + mouseX + "   " + "yCor" + mouseY);
