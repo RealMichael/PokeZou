@@ -22,25 +22,48 @@ textAlign(CENTER, CENTER); // centre le texte horizontalement et verticalement
   text("BATTLE",400,240,battleLen,battleWid);
   }
   else if(battleClicked == true){
+    if(mOver(330,315,100,50)){
+      fill(200);
+    }
+    else{
       fill(255);
+    }
       rect(330,315,100,50);
       fill(0);
       textSize(20);
       text("Thunder",330,315,100,50);
       
+     
+      if(mOver(470,315,100,50)){
+      fill(200);
+    }
+    else{
       fill(255);
+    }
       rect(470,315,100,50);
       fill(0);
       textSize(20);
       text("Rage",470,315,100,50);
       
+      
+      if(mOver(330,385,100,50)){
+      fill(200);
+    }
+    else{
       fill(255);
+    }
       rect(330,385,100,50);
       fill(0);
       textSize(20);
       text("Recover",330,385,100,50);
       
+      
+      if(mOver(470,385,100,50)){
+      fill(200);
+    }
+    else{
       fill(255);
+    }
       rect(470,385,100,50);
       fill(0);
       textSize(20);
@@ -49,7 +72,16 @@ textAlign(CENTER, CENTER); // centre le texte horizontalement et verticalement
   }
 }
   
-  
+public boolean mOver(int xCor,int yCor,int length,int width){
+  //MOUSE OVER
+  if(mouseX >= xCor - (length / 2 ) && mouseX < xCor - (length / 2) + length && mouseY >= yCor - (width / 2) && mouseY < yCor - (width / 2) + width){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+    
   
 
 public void mClick(){
@@ -70,6 +102,9 @@ public void mClick(){
 }
 
 public void draw(){
+  if(mousePressed){
+      System.out.println("xCor" + mouseX + "   " + "yCor" + mouseY);
+  }
  // background(image);
     setup();
     fill(255);
