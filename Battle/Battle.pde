@@ -7,6 +7,7 @@ int width = 480;
 int length = 800;
 boolean battleClicked = false;
 boolean battleStart = false;
+boolean wildTurn = false;
 Pokemons starter;
 Pokemons wild;
 int numb = ((int)(Math.random() * (151)));
@@ -146,7 +147,7 @@ public void mClick(){
       }
   }
   }
-  
+  if(wildTurn == false){
   if(battleClicked == true){
       if(mousePressed){
          if(mOver(330,315,100,50)){
@@ -158,6 +159,7 @@ public void mClick(){
             else{
             wild.setHealth(wild.getHealth() - dmg);
             }
+            wildTurn = true;
          }
            if(mOver(470,315,100,50)){
            int dmg = ((int)(Math.random() * (200)) + 300);
@@ -169,6 +171,7 @@ public void mClick(){
             else{
             wild.setHealth(wild.getHealth() - dmg);
             }
+            wildTurn = true;
          }
            
            if(mOver(330,385,100,50)){
@@ -181,7 +184,7 @@ public void mClick(){
            else{
              starter.setHealth(starter.getHealth() + 400);
            }
-  
+            wildTurn = true;
            }
            
            if(mOver(470,385,100,50)){
@@ -194,11 +197,13 @@ public void mClick(){
             else{
             wild.setHealth(wild.getHealth() - dmg);
             }
+             wildTurn = true;
          }
            
          //  battleClicked = false;
          }
       }
+}
 }
 
 public void draw(){
