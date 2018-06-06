@@ -12,7 +12,6 @@ PImage overWorld;
   public void setup(){
     size(768,640);
     frameRate(120);
-    noSmooth();
     overWorld = loadImage("Images/map.png");
     fileReading();
   }
@@ -20,14 +19,13 @@ PImage overWorld;
     public void draw(){
          background(0);
          x = new Red(xCor,yCor);
-         n[0] = new NPC(100,100);
          pushMatrix();
          translate(width / 2,height / 2);
          scale(2.5);
          translate(x.getX()*-1-(16/2),x.getY()*-1-(16/2));
          image(overWorld,0,0);
          x.display(direction);
-         n[0].display();
+         npcDisplay();
          popMatrix();
     }
     
@@ -43,6 +41,14 @@ PImage overWorld;
       for (int i = 0;i < NPC.length;i++){
         tempTwo = split(NPC[i],",");
         n = (NPC[]) append(n,new NPC(float(tempTwo[1]) * 16,float(tempTwo[2]) * 16));
+      }
+    }
+    
+    void npcDisplay(){
+      PImage p = loadImage("Images/snorlax.png");
+      p.resize(16,20);
+      for (int i = 0;i < n.length;i++){
+        n[i].display(p);
       }
     }
 

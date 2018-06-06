@@ -24,7 +24,11 @@ public class NPC{
      yCor = y;
   }
   
-  void display(){
-    image(sprites[37],xCor,yCor);
+  PImage getSprite(int b){
+    return sprites[b];
+  }
+  
+  void display(PImage s){
+    image(s,xCor,yCor);
   }
 }
