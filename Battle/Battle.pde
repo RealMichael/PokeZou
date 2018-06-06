@@ -6,6 +6,7 @@ int healthRandP = ((int)(Math.random() * (500)) + 1000);
 int width = 480;
 int length = 800;
 boolean battleClicked = false;
+boolean battleStart = false;
 Pokemons starter;
 Pokemons wild;
 int numb = ((int)(Math.random() * (151)));
@@ -13,12 +14,22 @@ String textBox = "Pick A Move For Pikachu To Use!";
 //= new Pokemons(0);
 
 public void setup(){
+  size(800,480);
+  image = loadImage("Battlefield2.png");
+  background(image);
 starter = new Pokemons(24);
 wild = new Pokemons(numb);
+if(battleStart == false){
+starter.setHealth(healthRandP);
+wild.setHealth(healthRand);
+battleStart = true;
+}
+}
+
+public void setup2(){
 //x.resize(200,200);
   //x.displayBack(200,200);
   //surface.setResizable(true);
-  size(800,480);
   image = loadImage("Battlefield2.png");
   background(image);
  
@@ -138,27 +149,74 @@ public void mClick(){
   
   if(battleClicked == true){
       if(mousePressed){
-         if(mOver(330,315,100,50) || mOver(470,315,100,50) || mOver(330,385,100,50) || mOver(470,385,100,50)){
-           battleClicked = false;
+         if(mOver(330,315,100,50)){
+           int dmg = ((int)(Math.random() * (200)) + 300);
+            textBox = "Pikachu used Thunder and did" + " " + dmg + " " + "damage!";
+            if(wild.getHealth() - dmg <= 0){
+              wild.setHealth(0);
+            }
+            else{
+            wild.setHealth(wild.getHealth() - dmg);
+            }
+         }
+           if(mOver(470,315,100,50)){
+           int dmg = ((int)(Math.random() * (200)) + 300);
+           textBox = "Pikachu used Rage and did" + " " + dmg + " " + "damage!";
+           
+           if(wild.getHealth() - dmg <= 0){
+              wild.setHealth(0);
+            }
+            else{
+            wild.setHealth(wild.getHealth() - dmg);
+            }
+         }
+           
+           if(mOver(330,385,100,50)){
+           int dmg = ((int)(Math.random() * (200)) + 300);
+           textBox = "Pikachu used Recover and gained" + " " + "400" + " " + "health!";
+           
+           if(starter.getHealth() + 400 >= healthRandP){
+             starter.setHealth(healthRandP);
+           }
+           else{
+             starter.setHealth(starter.getHealth() + 400);
+           }
+  
+           }
+           
+           if(mOver(470,385,100,50)){
+           int dmg = ((int)(Math.random() * (200)) + 300);
+           textBox = "Pikachu used Tackle and did" + " " + dmg + " " + "damage!";
+           
+           if(wild.getHealth() - dmg <= 0){
+              wild.setHealth(0);
+            }
+            else{
+            wild.setHealth(wild.getHealth() - dmg);
+            }
+         }
+           
+         //  battleClicked = false;
          }
       }
 }
-}
+
 public void draw(){
   if(mousePressed){
     System.out.println(starter.getTable());
       System.out.println("xCor" + mouseX + "   " + "yCor" + mouseY);
   }
  // background(image);
-    setup();
+    setup2();
     fill(255);
   mClick();
+  
  starter.displayBack(100,400);
  fill(0);
   textSize(20);
  // textAlign(CENTER,CENTER);
   text(starter.getName(),125,375,150,75);
-  starter.setHealth(healthRandP);
+ // starter.setHealth(healthRandP);
   text("Health:" + "  " + starter.getHealth(),125,395,150,75);
  
  
@@ -166,8 +224,9 @@ public void draw(){
   fill(0);
   textSize(20);
   text(wild.getName(),630,70,150,75);
-  wild.setHealth(healthRand);
+ // wild.setHealth(healthRand);
   text("Health:" + "  " + wild.getHealth(),630,90,150,75);
+  
 }
   
   
