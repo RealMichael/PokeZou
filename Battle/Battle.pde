@@ -236,7 +236,7 @@ public void draw(){
     fill(255);
   
   
- starter.displayBack(100,400);
+ starter.displayBack(100,300);
  fill(0);
   textSize(20);
  // textAlign(CENTER,CENTER);

@@ -41,6 +41,8 @@ public class Pokemons{
       for (int c = 0;c < widthNum;c++){
           front[index] = frontSprite.get(c * spriteWidth,i * spriteHeight,spriteWidth,spriteHeight);
           back[index] = backSprite.get(c * spriteWidth,i * spriteHeight,spriteWidth,spriteHeight);
+          back[index].resize(150,150);
+          front[index].resize(150,150);
           index++;
       }    
     }  
