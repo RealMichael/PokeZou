@@ -29,11 +29,14 @@ boolean attacked = false;
 boolean wildAttacked = false;
 boolean wildDisplay = true;
 boolean starterDisplay = true;
+boolean runner = false;
+
 Pokemons starter;
 Pokemons wild;
 int numb = ((int)(Math.random() * (151)));
 String textBox = "Pick A Move For Pikachu To Use!";
 String textBox2 = "Click anywhere in this textbox to continue!";
+String runFail = "";
 // End of battle variables
 PImage overWorld;
   public void setup(){
@@ -388,7 +391,7 @@ PImage overWorld;
       rect(400,440,680,50);
       fill(0);
       textSize(20);
-      text(textBox,400,430,750,50);
+      text(runFail + textBox,400,430,750,50);
       //delay(delayTime);
       //delayTime = 0;
       
@@ -414,6 +417,7 @@ public void enemy(){
   //delay(1000);
   String result = "";
   int dmg2 = 0;
+  runner = false;
   if(wildTurn){
     if(starter.getType().equals(wild.getEffect())){
               dmg2 = ((int)(Math.random() * (200)) + 400);
@@ -468,6 +472,7 @@ public boolean exitBattle(){
     wildDisplay = false;
     wildAttacked = true;
     attacked = true;
+    wildTurn = false;
     if(mousePressed){
       if(mouseX >= 0 && mouseX <= 768){
         counter ++;
@@ -496,6 +501,7 @@ public boolean exitBattle(){
      starterDisplay = false;
      wildAttacked = true;
      attacked = true;
+     wildTurn = false;
       if(mousePressed){
       if(mouseX >= 0 && mouseX <= 768){
         counter ++;
@@ -531,21 +537,45 @@ public void mClick(){
     if(mouseX >= (battleScreenLength / 2) - (battleLen / 2) && mouseX < (battleScreenLength / 2) - (battleLen / 2) + battleLen && mouseY >= (battleScreenWidth / 2) - (battleWid / 2) && mouseY <  (battleScreenWidth / 2) - (battleWid / 2) + battleWid){
                 battleClicked = true;
       }
+    if(mOver(400,300,100,40)){
+      int rand = ((int)(Math.random() * (100)));
+      //if(runner = false){
+      if(rand < 50){
+        isBattle = false;
+        battleReset();
+        
+      //  runner = true;
+        
+      }
+      else{
+        battleClicked = true;
+        runFail = "You could not run away! ";
+      }
+     // else{
+      //  battleClicked = true;
+     // }
+      
+  
   }
   }
+  }
+  
   if(wildTurn == false){
   if(battleClicked == true){
       if(mousePressed){
          if(attacked == false){
          if(mOver(330,315,100,50)){
+           runFail = "";
            int dmg = 0;
            if(wild.getType().equals(starter.getEffect())){
              dmg = ((int)(Math.random() * (200)) + 400);
              textBox = "Pikachu used Thunder and did" + " " + dmg + " " + "damage.  It's super effective!";
+             
            }
            else if(starter.getType().equals(wild.getEffect())){
               dmg = ((int)(Math.random() * (200)) + 200);
              textBox = "Pikachu used Thunder and did" + " " + dmg + " " + "damage.  It's not very effective!";
+             
            }
            else{
             dmg = ((int)(Math.random() * (200)) + 300);
@@ -562,11 +592,12 @@ public void mClick(){
             wild.setHealth(wild.getHealth() - dmg);
             }
          attacked = true;
-        delay(500);
+        delay(300);
         textBox2 = "Click anywhere in this textbox to continue!";
         //wildTurn = true;
          }
            if(mOver(470,315,100,50)){
+             runFail = "";
              int dmg = 0;
            if(wild.getType().equals(starter.getEffect())){
               dmg = ((int)(Math.random() * (200)) + 400);
@@ -588,12 +619,13 @@ public void mClick(){
             wild.setHealth(wild.getHealth() - dmg);
             }
             attacked = true;
-            delay(500);
+            delay(300);
             textBox2 = "Click anywhere in this textbox to continue!";
            // wildTurn = true;
          }
           
            if(mOver(330,385,100,50)){
+             runFail = "";
            int dmg = ((int)(Math.random() * (200)) + 300);
            textBox = "Pikachu used Recover and gained" + " " + "400" + " " + "health!";
            delayTime = 1000;
@@ -604,12 +636,13 @@ public void mClick(){
              starter.setHealth(starter.getHealth() + 400);
            }
            attacked = true;
-           delay(500);
+           delay(300);
            textBox2 = "Click anywhere in this textbox to continue!";
            // wildTurn = true;
            }
            
            if(mOver(470,385,100,50)){
+             runFail = "";
              int dmg = 0;
            if(wild.getType().equals(starter.getEffect())){
              dmg = ((int)(Math.random() * (200)) + 400);
@@ -631,7 +664,7 @@ public void mClick(){
             wild.setHealth(wild.getHealth() - dmg);
             }
             attacked = true;
-            delay(500);
+            delay(300);
             textBox2 = "Click anywhere in this textbox to continue!";
            }
            
@@ -647,5 +680,7 @@ public void mClick(){
          }
             }
             }
-}
-}
+  }
+  }
+
+  
