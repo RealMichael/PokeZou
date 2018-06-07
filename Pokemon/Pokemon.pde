@@ -106,6 +106,12 @@ PImage overWorld;
         tempTwo = split(NPC[i],",");
         n = (NPC[]) append(n,new NPC(float(tempTwo[1]) * 16,float(tempTwo[2]) * 16));
       }
+      String[] grass = loadStrings("grass.txt");
+      String[] tempThree = new String[0];
+      for (int i = 0;i < grass.length;i++){
+        tempThree = split(grass[i],",");
+        g = (Grass[]) append(g,new Grass(float(tempThree[1]) * 16,float(tempThree[3]) * 16));
+      }
     }
     
     void npcDisplay(){
