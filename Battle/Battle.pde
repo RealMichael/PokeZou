@@ -12,6 +12,8 @@ boolean wildTurn = false;
 boolean del = false;
 boolean attacked = false;
 boolean wildAttacked = false;
+boolean wildDisplay = true;
+boolean starterDisplay = true;
 Pokemons starter;
 Pokemons wild;
 int numb = ((int)(Math.random() * (151)));
@@ -129,6 +131,7 @@ public void setup2(){
       fill(0);
       textSize(8);
       text(textBox2,400,450,350,35);
+      winLose();
  // }
   }
   
@@ -277,7 +280,20 @@ public void mClick(){
 }
 }
 
-
+public void winLose(){
+  if(wild.getHealth() <= 0){
+    fill(0);
+    textSize(60);
+    text("VICTORIOUS!",350,200,400,75);
+    wildDisplay = false;
+  }
+  else if(starter.getHealth() <= 0){
+    fill(0);
+     textSize(60);
+     text("DEFEAT!",350,200,400,75);
+     starterDisplay = false;
+  }
+}
 
 
 public void draw(){
@@ -290,7 +306,7 @@ public void draw(){
     setup2();
    // fill(255);
   
-  
+  if(starterDisplay){
  starter.displayBack(100,300);
  fill(0);
   textSize(20);
@@ -298,14 +314,15 @@ public void draw(){
   text(starter.getName(),125,375,150,75);
  // starter.setHealth(healthRandP);
   text("Health:" + "  " + starter.getHealth(),125,395,150,75);
- 
- 
+  }
+ if(wildDisplay){
   wild.display(600,100);
   fill(0);
   textSize(20);
   text(wild.getName(),630,70,150,75);
  // wild.setHealth(healthRand);
   text("Health:" + "  " + wild.getHealth(),630,90,150,75);
+ }
   enemy();
 }
   
