@@ -11,6 +11,7 @@ public class Pokemons{
   String type;
   String name;
   String move;
+  String effect;
   Table table = loadTable("pokedex.csv");
   
   //ArrayList<String[]> data = new ArrayList<String[]>();
@@ -32,6 +33,7 @@ public class Pokemons{
     type = table.getString(num,1);
     name = table.getString(num,0);
     move = table.getString(num,2);
+    effect = table.getString(num,3);
     PImage frontSprite = loadImage("Images/front.png");
     PImage backSprite = loadImage("Images/back.png");
     int spriteWidth = frontSprite.width / widthNum; //front and back sprites have same width and height
@@ -47,7 +49,9 @@ public class Pokemons{
       }    
     }  
   }
-  
+  public String getEffect(){
+    return effect;
+  }
   public int getIndexNum(){
     return indexNum;
   }

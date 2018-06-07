@@ -284,6 +284,10 @@ PImage overWorld;
     }
   }
   
+  
+    
+  
+  
   public void battleReset(){
     int numb = ((int)(Math.random() * (151)));
     starter = new Pokemons(24);
@@ -381,10 +385,10 @@ PImage overWorld;
       
       fill(255);
       //rectMode(CENTER);
-      rect(400,440,600,50);
+      rect(400,440,680,50);
       fill(0);
       textSize(20);
-      text(textBox,400,430,600,50);
+      text(textBox,400,430,750,50);
       //delay(delayTime);
       //delayTime = 0;
       
@@ -423,7 +427,7 @@ public void enemy(){
             //wildTurn = false;
             if(wildAttacked == true){
              if(mousePressed){
-              if(mOver(400,440,600,50)){
+              if(mOver(400,440,680,50)){
              wildTurn = false;
              attacked = false;
             textBox = wild.getName() + " used " + wild.getMove() + " and did " + dmg2 + " damage!";
@@ -521,8 +525,20 @@ public void mClick(){
       if(mousePressed){
          if(attacked == false){
          if(mOver(330,315,100,50)){
-           int dmg = ((int)(Math.random() * (200)) + 300);
+           int dmg = 0;
+           if(wild.getType().equals(starter.getEffect())){
+             dmg = ((int)(Math.random() * (200)) + 400);
+             textBox = "Pikachu used Thunder and did" + " " + dmg + " " + "damage.  It's super effective!";
+           }
+           else if(starter.getType().equals(wild.getEffect())){
+              dmg = ((int)(Math.random() * (200)) + 200);
+             textBox = "Pikachu used Thunder and did" + " " + dmg + " " + "damage.  It's not very effective!";
+           }
+           else{
+            dmg = ((int)(Math.random() * (200)) + 300);
             textBox = "Pikachu used Thunder and did" + " " + dmg + " " + "damage!";
+           }
+         
           //  delay(1000);
          //  delayTime = 1000;
          // del = true;
@@ -538,8 +554,19 @@ public void mClick(){
         //wildTurn = true;
          }
            if(mOver(470,315,100,50)){
-           int dmg = ((int)(Math.random() * (200)) + 300);
-           textBox = "Pikachu used Rage and did" + " " + dmg + " " + "damage!";
+             int dmg = 0;
+           if(wild.getType().equals(starter.getEffect())){
+              dmg = ((int)(Math.random() * (200)) + 400);
+             textBox = "Pikachu used Rage and did" + " " + dmg + " " + "damage.  It's super effective!";
+           }
+           else if(starter.getType().equals(wild.getEffect())){
+            dmg = ((int)(Math.random() * (200)) + 200);
+             textBox = "Pikachu used Rage and did" + " " + dmg + " " + "damage.  It's not very effective!";
+           }
+           else{
+            dmg = ((int)(Math.random() * (200)) + 300);
+            textBox = "Pikachu used Rage and did" + " " + dmg + " " + "damage!";
+           }
            delayTime = 1000;
            if(wild.getHealth() - dmg <= 0){
               wild.setHealth(0);
@@ -570,8 +597,19 @@ public void mClick(){
            }
            
            if(mOver(470,385,100,50)){
-           int dmg = ((int)(Math.random() * (200)) + 300);
-           textBox = "Pikachu used Tackle and did" + " " + dmg + " " + "damage!";
+             int dmg = 0;
+           if(wild.getType().equals(starter.getEffect())){
+             dmg = ((int)(Math.random() * (200)) + 400);
+             textBox = "Pikachu used Tackle and did" + " " + dmg + " " + "damage.  It's super effective!";
+           }
+           else if(starter.getType().equals(wild.getEffect())){
+              dmg = ((int)(Math.random() * (200)) + 200);
+             textBox = "Pikachu used Tackle and did" + " " + dmg + " " + "damage.  It's not very effective!";
+           }
+           else{
+            dmg = ((int)(Math.random() * (200)) + 300);
+            textBox = "Pikachu used Tackle and did" + " " + dmg + " " + "damage!";
+           }
            delayTime = 1000;
            if(wild.getHealth() - dmg <= 0){
               wild.setHealth(0);
@@ -591,7 +629,7 @@ public void mClick(){
       }
       if(attacked == true){
             if(mousePressed){
-              if(mOver(400,440,600,50)){
+              if(mOver(400,440,680,50)){
              wildTurn = true;
          }
             }
