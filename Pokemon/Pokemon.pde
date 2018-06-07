@@ -7,6 +7,7 @@ Pokemons b;
 walls[] w = new walls[0];
 NPC[] n = new NPC[0];
 Grass[] g = new Grass[0];
+house[] h = new house[0];
 int direction;
 int leftOrRight = 0;
 boolean isBattle,isInGrass;
@@ -112,6 +113,13 @@ PImage overWorld;
       for (int i = 0;i < grass.length;i++){
         tempThree = split(grass[i],",");
         g = (Grass[]) append(g,new Grass(float(tempThree[1]) * 16,float(tempThree[2]) * 16));
+      }
+      String[] house = loadStrings("house.txt");
+      String[] tempFour = new String[0];
+      for (int i = 0;i < house.length;i++){
+        tempFour = split(house[i],",");
+        h = (house[]) append(h,new house(float(tempFour[1]) * 16,float(tempFour[2]) * 16,i)); 
+        // first house is pokecenter,second is the middle house, third is the top most house 
       }
     }
     

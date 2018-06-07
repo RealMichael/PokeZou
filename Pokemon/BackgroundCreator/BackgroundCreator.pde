@@ -6,7 +6,7 @@ int listTile[][] = new int [cols][rows];
 //1 is wallsgit st
 int mode;
 String save[] = new String[0];
-// 1 is wall,2 is npc, 3 is grass
+// 1 is wall,2 is npc, 3 is grass,4 is house
 void setup(){
   size(768,640);
   map = loadImage("Images/map.png");
@@ -55,6 +55,10 @@ void paint(){
        }
        else if (listTile[i][c] == 3){
          fill(0,255,0,100);
+         rect(i * tile,c * tile,tile,tile);
+       }
+       else if (listTile[i][c] == 4){
+         fill(0,0,255,100);
          rect(i * tile,c * tile,tile,tile);
        }
      }
