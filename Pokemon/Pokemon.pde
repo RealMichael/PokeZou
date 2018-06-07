@@ -10,6 +10,7 @@ Grass[] g = new Grass[0];
 house[] h = new house[0];
 int direction;
 int leftOrRight = 0;
+int characterDirection;
 boolean isBattle,isInGrass;
 // Battle variables
 PImage image;
@@ -143,6 +144,15 @@ PImage overWorld;
     return false;
   }
   
+  boolean isHouse(){
+    for (int i = 0;i < h.length;i ++){
+      if (h[i].isHouse(x.getX(),x.getY(),2)){
+        return true;
+      }
+    }
+    return false;
+  }
+  
   boolean collisionNPC(int direction){
     for (int i = 0;i < n.length;i++){
       if (n[i].checkNpc(x.getX(),x.getY(),direction)){
@@ -169,7 +179,11 @@ PImage overWorld;
     if (isBattle){
     }
     else {
-          if(keyCode == UP && !collisionWalls(2) && !collisionNPC(2)){
+      if (key == 'x' && isHouse() && characterDirection == 2){
+        rect(330,385,100,50);
+      }
+          if(keyCode == UP){
+            if (!collisionWalls(2) && !collisionNPC(2)){
             int r = (int)(Math.random() * 100);
             if (isInGrass && r < 10){
               isBattle = true;
@@ -184,6 +198,11 @@ PImage overWorld;
                 leftOrRight = 0;
               }
               yCor -= 16;
+              characterDirection = 2;
+            }
+            }
+            else {
+              characterDirection = 2;
             }
           }
           else if(keyCode == DOWN && !collisionWalls(0) && !collisionNPC(0)){
@@ -199,8 +218,10 @@ PImage overWorld;
               else {
                 direction = 3;
                 leftOrRight = 0;
+               
               }
                 yCor += 16;
+                characterDirection = 0;
             }
           }
           else if(keyCode == RIGHT && !collisionWalls(3) && !collisionNPC(3)){
@@ -212,12 +233,15 @@ PImage overWorld;
               if (leftOrRight == 0){
                 direction = 9;
                 leftOrRight = 1;
+                
               }
               else {
                 direction = 11;
                 leftOrRight = 0;
+               
               }
                 xCor += 16;
+                characterDirection = 3;
             }
           }
           else if(keyCode == LEFT && !collisionWalls(1) && !collisionNPC(1)){
@@ -235,6 +259,7 @@ PImage overWorld;
                 leftOrRight = 0;
               }
                 xCor -= 16;
+                characterDirection = 1;
             }
           }
     }

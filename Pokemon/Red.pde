@@ -1,4 +1,6 @@
 public class Red{
+  //2 up, 1 left, 0 down, 3 right
+  int direction;
   float x,y;
   int current;
   PImage[] Sprites;
@@ -29,6 +31,14 @@ public class Red{
   
   public void setY(int y){
     this.y = y;
+  }
+  
+  public void setDirection(int d){
+    direction = d;
+  }
+  
+  public int getDirection(){
+    return direction;
   }
   
   public float getX(){

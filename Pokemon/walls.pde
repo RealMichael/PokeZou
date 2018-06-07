@@ -7,7 +7,7 @@ public class walls{
   }
   
   public boolean checkWall(float x,float y,int direction){
-    //0 up, 1 left, 2 down, 3 right
+    //2 up, 1 left, 0 down, 3 right
     if (direction == 0){
       if (yCor == (y + 16) && x == xCor){
         return true;
