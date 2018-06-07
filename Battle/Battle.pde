@@ -10,10 +10,13 @@ boolean battleClicked = false;
 boolean battleStart = false;
 boolean wildTurn = false;
 boolean del = false;
+boolean attacked = false;
+boolean wildAttacked = false;
 Pokemons starter;
 Pokemons wild;
 int numb = ((int)(Math.random() * (151)));
 String textBox = "Pick A Move For Pikachu To Use!";
+String textBox2 = "Click anywhere in this textbox to continue!";
 //= new Pokemons(0);
 
 public void setup(){
@@ -125,7 +128,7 @@ public void setup2(){
       
       fill(0);
       textSize(8);
-      text("Click anywhere in this textbox to continue!",400,450,350,35);
+      text(textBox2,400,450,350,35);
  // }
   }
   
@@ -147,20 +150,32 @@ public boolean mOver(int xCor,int yCor,int length,int width){
     
 public void enemy(){
   //delay(1000);
-  int dmg2 = ((int)(Math.random() * (200)) + 300); 
+  
   if(wildTurn){
+    int dmg2 = ((int)(Math.random() * (200)) + 300); 
     //delay(1000);
-     textBox = wild.getName() + " used " + wild.getMove() + " and did " + dmg2 + " damage!";
+    // textBox = wild.getName() + " used " + wild.getMove() + " and did " + dmg2 + " damage!";
      if(starter.getHealth() - dmg2 <= 0){
               starter.setHealth(0);
             }
             else{
             starter.setHealth(starter.getHealth() - dmg2);
             }
-            
+            wildAttacked = true;
+            //wildTurn = false;
+            if(wildAttacked == true){
+             if(mousePressed){
+              if(mOver(400,440,350,35)){
+             wildTurn = false;
+             attacked = false;
+            textBox = wild.getName() + " used " + wild.getMove() + " and did " + dmg2 + " damage!";
+            textBox2 = "Pick A Move For Pikachu To Use!";
+         }
+            }
+            }
   }
   
-  wildTurn = false;
+  //wildTurn = false;
 }
   
 
@@ -182,9 +197,11 @@ public void mClick(){
   if(wildTurn == false){
   if(battleClicked == true){
       if(mousePressed){
+        if(attacked == false){
          if(mOver(330,315,100,50)){
            int dmg = ((int)(Math.random() * (200)) + 300);
             textBox = "Pikachu used Thunder and did" + " " + dmg + " " + "damage!";
+          //  delay(1000);
          //  delayTime = 1000;
          // del = true;
             if(wild.getHealth() - dmg <= 0){
@@ -193,9 +210,10 @@ public void mClick(){
             else{
             wild.setHealth(wild.getHealth() - dmg);
             }
-         
-       // delay(1000);
-        wildTurn = true;
+         attacked = true;
+        delay(500);
+        textBox2 = "Click anywhere in this textbox to continue!";
+        //wildTurn = true;
          }
            if(mOver(470,315,100,50)){
            int dmg = ((int)(Math.random() * (200)) + 300);
@@ -207,9 +225,12 @@ public void mClick(){
             else{
             wild.setHealth(wild.getHealth() - dmg);
             }
-            wildTurn = true;
+            attacked = true;
+            delay(500);
+            textBox2 = "Click anywhere in this textbox to continue!";
+           // wildTurn = true;
          }
-           
+          
            if(mOver(330,385,100,50)){
            int dmg = ((int)(Math.random() * (200)) + 300);
            textBox = "Pikachu used Recover and gained" + " " + "400" + " " + "health!";
@@ -220,7 +241,10 @@ public void mClick(){
            else{
              starter.setHealth(starter.getHealth() + 400);
            }
-            wildTurn = true;
+           attacked = true;
+           delay(500);
+           textBox2 = "Click anywhere in this textbox to continue!";
+           // wildTurn = true;
            }
            
            if(mOver(470,385,100,50)){
@@ -233,14 +257,28 @@ public void mClick(){
             else{
             wild.setHealth(wild.getHealth() - dmg);
             }
-             wildTurn = true;
-         }
+            attacked = true;
+            delay(500);
+            textBox2 = "Click anywhere in this textbox to continue!";
+           }
            
          //  battleClicked = false;
-         }
+         //attacked = true;
+        }
       }
+      }
+      if(attacked == true){
+            if(mousePressed){
+              if(mOver(400,440,350,35)){
+             wildTurn = true;
+         }
+            }
+            }
 }
 }
+
+
+
 
 public void draw(){
   if(mousePressed){
