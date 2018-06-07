@@ -284,6 +284,16 @@ PImage overWorld;
     }
   }
   
+  public void battleReset(){
+    int numb = ((int)(Math.random() * (151)));
+    starter = new Pokemons(24);
+    wild = new Pokemons(numb);
+    starterDisplay = true;
+    wildDisplay = true;
+    textBox = "Pick A Move For Pikachu To Use!";
+    attacked = false;
+  }
+  
   public void setup2(){
 //x.resize(200,200);
   //x.displayBack(200,200);
@@ -448,8 +458,9 @@ public boolean exitBattle(){
     if(exitBattle()){
       isBattle = false;
       counter = 0;
+      battleReset();
     }
-      
+  //    battleReset();
     //delay(1000);
     //isBattle = false;
     //if(mousePressed){
@@ -475,6 +486,7 @@ public boolean exitBattle(){
     if(exitBattle()){
       isBattle = false;
       counter = 0;
+      battleReset();
     }
      //delay(1000);
     // isBattle = false;
@@ -483,7 +495,9 @@ public boolean exitBattle(){
     //    isBattle = false;
     //  }
     //}
+   // battleReset();
   }
+  //battleReset();
 }
 
 public void mClick(){
