@@ -9,6 +9,7 @@ int delayTime;
 boolean battleClicked = false;
 boolean battleStart = false;
 boolean wildTurn = false;
+boolean del = false;
 Pokemons starter;
 Pokemons wild;
 int numb = ((int)(Math.random() * (151)));
@@ -111,16 +112,27 @@ public void setup2(){
       textSize(20);
       text("Tackle",470,385,100,50);
       
-      fill(255);
-      //rectMode(CENTER);
-      rect(400,440,350,35);
+         fill(255);
+        //rectMode(CENTER);
+        rect(400,440,350,35);
+        fill(0);
+        textSize(15);
+        text(textBox,400,430,350,35);
+      //if(del){
+     // delay(delayTime);
+     // del = false;
+      //delayTime = 0;
+      
       fill(0);
-      textSize(15);
-      text(textBox,400,440,350,35);
-      delay(delayTime);
-      delayTime = 0;
+      textSize(8);
+      text("Click anywhere in this textbox to continue!",400,450,350,35);
+ // }
   }
   
+}
+
+public void slow(int time){
+   delay(time);
 }
   
 public boolean mOver(int xCor,int yCor,int length,int width){
@@ -134,8 +146,10 @@ public boolean mOver(int xCor,int yCor,int length,int width){
 }
     
 public void enemy(){
+  //delay(1000);
   int dmg2 = ((int)(Math.random() * (200)) + 300); 
   if(wildTurn){
+    //delay(1000);
      textBox = wild.getName() + " used " + wild.getMove() + " and did " + dmg2 + " damage!";
      if(starter.getHealth() - dmg2 <= 0){
               starter.setHealth(0);
@@ -171,14 +185,17 @@ public void mClick(){
          if(mOver(330,315,100,50)){
            int dmg = ((int)(Math.random() * (200)) + 300);
             textBox = "Pikachu used Thunder and did" + " " + dmg + " " + "damage!";
-           delayTime = 1000;
+         //  delayTime = 1000;
+         // del = true;
             if(wild.getHealth() - dmg <= 0){
               wild.setHealth(0);
             }
             else{
             wild.setHealth(wild.getHealth() - dmg);
             }
-            wildTurn = true;
+         
+       // delay(1000);
+        wildTurn = true;
          }
            if(mOver(470,315,100,50)){
            int dmg = ((int)(Math.random() * (200)) + 300);
@@ -233,7 +250,7 @@ public void draw(){
  // background(image);
  mClick();
     setup2();
-    fill(255);
+   // fill(255);
   
   
  starter.displayBack(100,300);
