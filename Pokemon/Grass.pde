@@ -4,4 +4,13 @@ public class Grass{
     xCor = x;
     yCor = y;
   }
+  
+  public boolean checkGrass(float x,float y){
+    if (xCor == x && yCor == y){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 }

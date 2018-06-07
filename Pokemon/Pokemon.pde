@@ -89,6 +89,7 @@ PImage overWorld;
          image(overWorld,0,0);
          x.display(direction);
          npcDisplay();
+         inGrass();
          popMatrix();
       }
     }
@@ -110,7 +111,7 @@ PImage overWorld;
       String[] tempThree = new String[0];
       for (int i = 0;i < grass.length;i++){
         tempThree = split(grass[i],",");
-        g = (Grass[]) append(g,new Grass(float(tempThree[1]) * 16,float(tempThree[3]) * 16));
+        g = (Grass[]) append(g,new Grass(float(tempThree[1]) * 16,float(tempThree[2]) * 16));
       }
     }
     
@@ -143,6 +144,16 @@ PImage overWorld;
     return false;
   }
   
+  void inGrass(){
+   for (int i = 0;i < g.length;i++){
+     if(g[i].checkGrass(x.getX(),x.getY())){
+       isInGrass = true;
+       return;
+     }
+   }
+   isInGrass = false;
+  }
+  
   void keyPressed(){
     if (key == 'b'){
       isBattle = true;
@@ -151,48 +162,72 @@ PImage overWorld;
     }
     else {
           if(keyCode == UP && !collisionWalls(2) && !collisionNPC(2)){
-            if (leftOrRight == 0){
-              direction = 13;
-              leftOrRight = 1;
+            int r = (int)(Math.random() * 100);
+            if (isInGrass && r < 10){
+              isBattle = true;
             }
-            else {
-              direction = 15;
-              leftOrRight = 0;
-            }
+            else{
+              if (leftOrRight == 0){
+                direction = 13;
+                leftOrRight = 1;
+              }
+              else {
+                direction = 15;
+                leftOrRight = 0;
+              }
               yCor -= 16;
+            }
           }
           else if(keyCode == DOWN && !collisionWalls(0) && !collisionNPC(0)){
-            if (leftOrRight == 0){
-              direction = 1;
-              leftOrRight = 1;
+            int r = (int)(Math.random() * 100);
+            if (isInGrass && r < 10){
+              isBattle = true;
             }
-            else {
-              direction = 3;
-              leftOrRight = 0;
+            else{
+              if (leftOrRight == 0){
+                direction = 1;
+                leftOrRight = 1;
+              }
+              else {
+                direction = 3;
+                leftOrRight = 0;
+              }
+                yCor += 16;
             }
-              yCor += 16;
           }
           else if(keyCode == RIGHT && !collisionWalls(3) && !collisionNPC(3)){
-            if (leftOrRight == 0){
-              direction = 9;
-              leftOrRight = 1;
+            int r = (int)(Math.random() * 100);
+            if (isInGrass && r < 10){
+              isBattle = true;
             }
             else {
-              direction = 11;
-              leftOrRight = 0;
+              if (leftOrRight == 0){
+                direction = 9;
+                leftOrRight = 1;
+              }
+              else {
+                direction = 11;
+                leftOrRight = 0;
+              }
+                xCor += 16;
             }
-              xCor += 16;
           }
           else if(keyCode == LEFT && !collisionWalls(1) && !collisionNPC(1)){
-            if (leftOrRight == 0){
-              direction = 5;
-              leftOrRight = 1;
+            int r = (int)(Math.random() * 100);
+            if (isInGrass && r < 10){
+              isBattle = true;
             }
             else {
-              direction = 7;
-              leftOrRight = 0;
+              if (leftOrRight == 0){
+                direction = 5;
+                leftOrRight = 1;
+              }
+              else {
+                direction = 7;
+                leftOrRight = 0;
+              }
+                xCor -= 16;
             }
-              xCor -= 16;
           }
     }
   }
