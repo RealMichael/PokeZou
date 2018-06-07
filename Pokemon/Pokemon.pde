@@ -101,7 +101,7 @@ PImage overWorld;
     
     void npcDisplay(){
       PImage p = loadImage("Images/snorlax.png");
-      p.resize(16,20);
+      p.resize(32,32);
       for (int i = 0;i < n.length;i++){
         n[i].display(p);
       }
@@ -116,6 +116,15 @@ PImage overWorld;
     return false;
   }
   
+  boolean collisionNPC(int direction){
+    for (int i = 0;i < n.length;i++){
+      if (n[i].checkNpc(x.getX(),x.getY(),direction)){
+        return true;
+      }
+    }
+    return false;
+  }
+  
   void keyPressed(){
     if (key == 'b'){
       isBattle = true;
@@ -123,7 +132,7 @@ PImage overWorld;
     if (isBattle){
     }
     else {
-          if(keyCode == UP && !collisionWalls(2)){
+          if(keyCode == UP && !collisionWalls(2) && !collisionNPC(2)){
             if (leftOrRight == 0){
               direction = 13;
               leftOrRight = 1;
@@ -134,7 +143,7 @@ PImage overWorld;
             }
               yCor -= 16;
           }
-          else if(keyCode == DOWN && !collisionWalls(0)){
+          else if(keyCode == DOWN && !collisionWalls(0) && !collisionNPC(0)){
             if (leftOrRight == 0){
               direction = 1;
               leftOrRight = 1;
@@ -145,7 +154,7 @@ PImage overWorld;
             }
               yCor += 16;
           }
-          else if(keyCode == RIGHT && !collisionWalls(3)){
+          else if(keyCode == RIGHT && !collisionWalls(3) && !collisionNPC(3)){
             if (leftOrRight == 0){
               direction = 9;
               leftOrRight = 1;
@@ -156,7 +165,7 @@ PImage overWorld;
             }
               xCor += 16;
           }
-          else if(keyCode == LEFT && !collisionWalls(1)){
+          else if(keyCode == LEFT && !collisionWalls(1) && !collisionNPC(1)){
             if (leftOrRight == 0){
               direction = 5;
               leftOrRight = 1;

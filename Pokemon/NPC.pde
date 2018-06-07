@@ -28,6 +28,35 @@ public class NPC{
     return sprites[b];
   }
   
+  public boolean checkNpc(float x,float y,int direction){
+    //0 up, 1 left, 2 down, 3 right
+    if (direction == 0){
+      if (yCor == (y + 16) && x == xCor){
+        return true;
+      }
+      return false;
+    }
+    else if (direction == 1){
+      if (y == yCor && x == (xCor + 16)){
+        return true;
+      }
+      return false;
+    }
+    else if (direction == 2){
+      if (y == (yCor + 16) && xCor == x){
+        return true;
+      }
+      return false;
+    }
+    else if (direction == 3){
+      if (xCor == (x + 16) && yCor == y){
+        return true;
+      }
+      return false;
+    }
+    return false;
+  }
+  
   void display(PImage s){
     image(s,xCor,yCor);
   }
