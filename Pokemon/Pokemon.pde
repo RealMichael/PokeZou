@@ -412,11 +412,24 @@ public boolean mOver(int xCor,int yCor,int length,int width){
     
 public void enemy(){
   //delay(1000);
-  
+  String result = "";
+  int dmg2 = 0;
   if(wildTurn){
-    int dmg2 = ((int)(Math.random() * (200)) + 300); 
+    if(starter.getType().equals(wild.getEffect())){
+              dmg2 = ((int)(Math.random() * (200)) + 400);
+             result = "It's super effective!";
+           }
+           else if(wild.getType().equals(starter.getEffect())){
+            dmg2 = ((int)(Math.random() * (200)) + 200);
+             result = "It's not very effective!";
+           }
+           else{
+            dmg2 = ((int)(Math.random() * (200)) + 300);
+           result = "";
+           }
+   // int dmg2 = ((int)(Math.random() * (200)) + 300); 
     //delay(1000);
-    // textBox = wild.getName() + " used " + wild.getMove() + " and did " + dmg2 + " damage!";
+    // textBox = wild.getName() + " used " + wild.getMove() + " and did " + dmg2 + " damage!" +" " + "result";
      if(starter.getHealth() - dmg2 <= 0){
               starter.setHealth(0);
             }
@@ -430,7 +443,7 @@ public void enemy(){
               if(mOver(400,440,680,50)){
              wildTurn = false;
              attacked = false;
-            textBox = wild.getName() + " used " + wild.getMove() + " and did " + dmg2 + " damage!";
+            textBox = wild.getName() + " used " + wild.getMove() + " and did " + dmg2 + " damage!" + " " + result;
             textBox2 = "Pick A Move For Pikachu To Use!";
          }
             }
