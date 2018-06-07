@@ -103,6 +103,9 @@ PImage overWorld;
       PImage p = loadImage("Images/snorlax.png");
       p.resize(32,32);
       for (int i = 0;i < n.length;i++){
+        if (i == 2){
+          i+= 3;
+        }
         n[i].display(p);
       }
     }
