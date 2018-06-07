@@ -311,9 +311,9 @@ public void draw(){
  fill(0);
   textSize(20);
  // textAlign(CENTER,CENTER);
-  text(starter.getName(),125,375,150,75);
+  text(starter.getName(),125,300,150,75);
  // starter.setHealth(healthRandP);
-  text("Health:" + "  " + starter.getHealth(),125,395,150,75);
+  text("Health:" + "  " + starter.getHealth(),125,320,150,75);
   }
  if(wildDisplay){
   wild.display(600,100);
