@@ -6,7 +6,7 @@ int listTile[][] = new int [cols][rows];
 //1 is wallsgit st
 int mode;
 String save[] = new String[0];
-
+// 1 is wall,2 is npc, 3 is grass
 void setup(){
   size(768,640);
   map = loadImage("Images/map.png");
