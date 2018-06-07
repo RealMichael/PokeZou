@@ -63,13 +63,13 @@ PImage overWorld;
       fill(255);
   
     if(starterDisplay){
-       starter.displayBack(100,300);
+       starter.displayBack(50,250);
        fill(0);
         textSize(20);
         // textAlign(CENTER,CENTER);
-        text(starter.getName(),125,300,150,75);
+        text(starter.getName(),125,230,150,75);
        // starter.setHealth(healthRandP);
-       text("Health:" + "  " + starter.getHealth(),125,325,150,75);
+       text("Health:" + "  " + starter.getHealth(),125,250,150,75);
     }
     if(wildDisplay){
       wild.display(600,100);
@@ -292,6 +292,7 @@ PImage overWorld;
     wildDisplay = true;
     textBox = "Pick A Move For Pikachu To Use!";
     attacked = false;
+    battleClicked = false;
   }
   
   public void setup2(){
@@ -380,16 +381,16 @@ PImage overWorld;
       
       fill(255);
       //rectMode(CENTER);
-      rect(400,440,350,35);
+      rect(400,440,600,50);
       fill(0);
-      textSize(15);
-      text(textBox,400,430,350,35);
+      textSize(20);
+      text(textBox,400,430,600,50);
       //delay(delayTime);
       //delayTime = 0;
       
        fill(0);
-      textSize(8);
-      text(textBox2,400,450,350,35);
+      textSize(10);
+      text(textBox2,400,450,400,50);
       winLose();
   }
   
@@ -422,7 +423,7 @@ public void enemy(){
             //wildTurn = false;
             if(wildAttacked == true){
              if(mousePressed){
-              if(mOver(400,440,350,35)){
+              if(mOver(400,440,600,50)){
              wildTurn = false;
              attacked = false;
             textBox = wild.getName() + " used " + wild.getMove() + " and did " + dmg2 + " damage!";
@@ -590,7 +591,7 @@ public void mClick(){
       }
       if(attacked == true){
             if(mousePressed){
-              if(mOver(400,440,350,35)){
+              if(mOver(400,440,600,50)){
              wildTurn = true;
          }
             }
