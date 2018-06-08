@@ -31,7 +31,8 @@ boolean wildAttacked = false;
 boolean wildDisplay = true;
 boolean starterDisplay = true;
 boolean runner = false;
-boolean isBoss = true;
+boolean isBoss = false;
+boolean setHealth = true;
 Pokemons starter;
 Pokemons wild;
 int numb = ((int)(Math.random() * (151)));
@@ -71,6 +72,12 @@ PImage overWorld;
       setup2();
       fill(255);
   
+    if(setHealth){
+    if(isBoss){
+        starter.setHealth(8000);
+      }
+      setHealth = false;
+    }
     if(starterDisplay){
        starter.displayBack(50,250);
        fill(0);
@@ -184,6 +191,7 @@ PImage overWorld;
   void keyPressed(){
     if (key == 'b'){
       isBattle = true;
+      //isBoss = true;
     }
     if (isBattle){
     }
@@ -306,9 +314,13 @@ PImage overWorld;
     textBox = "Pick A Move For Pikachu To Use!";
     attacked = false;
     battleClicked = false;
+    bossCounter = 0;
+    setHealth = true;
+    
   }
   
   public void setup2(){
+    
 //x.resize(200,200);
   //x.displayBack(200,200);
   //surface.setResizable(true);
@@ -489,6 +501,8 @@ public boolean exitBattle(){
     attacked = true;
     wildTurn = false;
     isBoss = false;
+    setHealth = true;
+    
     if(mousePressed){
       if(mouseX >= 0 && mouseX <= 768){
         counter ++;
@@ -515,7 +529,7 @@ public boolean exitBattle(){
     wildAttacked = true;
     attacked = true;
     wildTurn = false;
-    isBoss = false;
+   isBoss = false;
     if(mousePressed){
       if(mouseX >= 0 && mouseX <= 768){
         counter ++;
@@ -546,7 +560,8 @@ public boolean exitBattle(){
      wildAttacked = true;
      attacked = true;
      wildTurn = false;
-     isBoss = false;
+    isBoss = false;
+    setHealth = true;
       if(mousePressed){
       if(mouseX >= 0 && mouseX <= 768){
         counter ++;
