@@ -50,7 +50,7 @@ PImage overWorld;
     wild = new Pokemons(numb);
     if(battleStart == false){
       if(isBoss){
-        starter.setHealth(5000);
+        starter.setHealth(8000);
       }
       else{
   starter.setHealth(healthRandP);
@@ -331,7 +331,7 @@ PImage overWorld;
   textAlign(CENTER,CENTER);
   text("BATTLE",400,240,150,75);
   
-  
+  if(isBoss == false){
   if(mOver(400,300,100,40)){
       fill(200);
   }
@@ -343,7 +343,9 @@ PImage overWorld;
   textSize(20);
   text("RUN",400,300,100,40);
  }
- 
+   }
+  
+   
   else if(battleClicked == true){
     if(mOver(330,315,100,50)){
       fill(200);
@@ -471,7 +473,7 @@ public boolean exitBattle(){
   public void winLose(){
   if(wild.getHealth() <= 0){
     if(isBoss){
-    if(bossCounter < 1){
+    if(bossCounter < 5){
       numb = ((int)(Math.random() * (151)));
     wild = new Pokemons(numb);
     bossCounter ++;
