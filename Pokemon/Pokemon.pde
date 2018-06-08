@@ -22,6 +22,7 @@ int battleScreenWidth = 480;
 int battleScreenLength = 800;
 int delayTime;
 int counter = 0;
+int bossCounter = 0;
 boolean battleClicked = false;
 boolean battleStart = false;
 boolean wildTurn = false;
@@ -30,7 +31,7 @@ boolean wildAttacked = false;
 boolean wildDisplay = true;
 boolean starterDisplay = true;
 boolean runner = false;
-
+boolean isBoss = true;
 Pokemons starter;
 Pokemons wild;
 int numb = ((int)(Math.random() * (151)));
@@ -48,7 +49,12 @@ PImage overWorld;
     starter = new Pokemons(24);
     wild = new Pokemons(numb);
     if(battleStart == false){
+      if(isBoss){
+        starter.setHealth(5000);
+      }
+      else{
   starter.setHealth(healthRandP);
+      }
   wild.setHealth(healthRand);
   battleStart = true;
 }
@@ -464,6 +470,40 @@ public boolean exitBattle(){
     
   public void winLose(){
   if(wild.getHealth() <= 0){
+    if(isBoss){
+    if(bossCounter < 1){
+      numb = ((int)(Math.random() * (151)));
+    wild = new Pokemons(numb);
+    bossCounter ++;
+    }
+    else{
+      fill(0);
+    textSize(60);
+    text("VICTORIOUS!",400,200,400,75);
+    textSize(20);
+    text("Click anywhere on the screen to continue",400,250,400,75);
+    wildDisplay = false;
+    wildAttacked = true;
+    attacked = true;
+    wildTurn = false;
+    isBoss = false;
+    if(mousePressed){
+      if(mouseX >= 0 && mouseX <= 768){
+        counter ++;
+      }
+    }
+    if(exitBattle()){
+      isBattle = false;
+      counter = 0;
+      battleReset();
+    }
+      
+      
+      
+      
+    }
+    }
+    else{
     fill(0);
     textSize(60);
     text("VICTORIOUS!",400,200,400,75);
@@ -473,6 +513,7 @@ public boolean exitBattle(){
     wildAttacked = true;
     attacked = true;
     wildTurn = false;
+    isBoss = false;
     if(mousePressed){
       if(mouseX >= 0 && mouseX <= 768){
         counter ++;
@@ -492,6 +533,7 @@ public boolean exitBattle(){
     //  }
     //}
   }
+  }
   else if(starter.getHealth() <= 0){
     fill(0);
      textSize(60);
@@ -502,6 +544,7 @@ public boolean exitBattle(){
      wildAttacked = true;
      attacked = true;
      wildTurn = false;
+     isBoss = false;
       if(mousePressed){
       if(mouseX >= 0 && mouseX <= 768){
         counter ++;
