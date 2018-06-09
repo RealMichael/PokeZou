@@ -13,6 +13,8 @@ walls[] middleHouseWall = new walls[0];
 NPC middleHouseNpc;
 house middleHouseExit;
 boolean isHouseOne = false;
+boolean isHouseTwo = false;
+boolean isPokeCenter = false;
 int direction;
 int leftOrRight = 0;
 int characterDirection;
@@ -73,7 +75,7 @@ PImage overWorld;
       x = new Red(xCor,yCor,false);
       if (isHouseOne && firstEnter){
         xCor = 32 * 8;
-        yCor = 32 * 14;
+        yCor = 32 * 16;
         firstEnter = false;
       }
       if (isBattle){
@@ -182,10 +184,9 @@ PImage overWorld;
       PImage p = loadImage("Images/snorlax.png");
       p.resize(32,32);
       for (int i = 0;i < n.length;i++){
-        if (i == 2){
-          i+= 3;
+        if (i == 1){
+          n[i].display(p);
         }
-        n[i].display(p);
       }
     }
   
@@ -254,6 +255,9 @@ PImage overWorld;
           isHouseOne = true;
           firstEnter = true;
         }
+        if (isHouseOne && characterDirection == 0){
+          isHouseOne = false;
+        }
       }
           if(keyCode == UP){
             if(!isHouseOne){
@@ -275,6 +279,7 @@ PImage overWorld;
               characterDirection = 2;
             }
             }
+            characterDirection = 2;
             }
             else if (isHouseOne){
               if (!HouseOneCollision(2)){
@@ -315,6 +320,7 @@ PImage overWorld;
                 characterDirection = 0;
             }
             }
+            characterDirection = 0;
             }
             else if (isHouseOne){
               if (!HouseOneCollision(0)){
@@ -356,6 +362,7 @@ PImage overWorld;
                 characterDirection = 3;
             }
             }
+            characterDirection = 3;
             }
             else if (isHouseOne){
               if (!HouseOneCollision(3)){
@@ -395,6 +402,7 @@ PImage overWorld;
                 characterDirection = 1;
             }
           }
+          characterDirection = 1;
             }
           else if (isHouseOne){
             if (!HouseOneCollision(1)){

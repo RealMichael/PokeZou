@@ -1,7 +1,7 @@
 PImage map;
-int rows = 40;
-int cols = 48;
-int tile = 16;
+int rows = 20;
+int cols = 24;
+int tile = 32;
 int listTile[][] = new int [cols][rows];
 //1 is wallsgit st
 int mode;
@@ -9,7 +9,8 @@ String save[] = new String[0];
 // 1 is wall,2 is npc, 3 is grass,4 is house
 void setup(){
   size(768,640);
-  map = loadImage("Images/map.png");
+  map = loadImage("Images/pokeCenter.png");
+  map.resize(768,640);
 }
 
 void draw(){
@@ -46,7 +47,7 @@ void paint(){
      for (int c = 0;c < rows;c++){
        noStroke();
        if (listTile[i][c] == 1){
-         fill(0,0,0,100);
+         fill(255,255,255,100);
          rect(i * tile,c * tile,tile,tile);
        }
        else if (listTile[i][c] == 2){

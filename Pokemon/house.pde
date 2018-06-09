@@ -21,4 +21,14 @@ public class house{
     }
     return false;
   }
+  
+  public boolean isExit(float x,float y,int direction){
+    if (direction == 0){
+      if (yCor == (y + 32) && xCor == x){
+        return true;
+      }
+      return false;
+    }
+    return false;
+  }
 }
