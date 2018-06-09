@@ -18,6 +18,7 @@ int characterDirection;
 boolean isBattle,isInGrass;
 // Battle variables
 PImage image;
+PImage middleHouse; //house 1 txt
 int battleLen = 150;
 int battleWid = 75;
 int healthRand = ((int)(Math.random() * (500)) + 1000);
@@ -51,6 +52,8 @@ PImage overWorld;
     overWorld = loadImage("Images/map.png");
     fileReading();
     image = loadImage("Images/Battlefield2.png");
+    middleHouse = loadImage("Images/houseOne.png");
+    middleHouse.resize(704,576);
     starter = new Pokemons(24);
     wild = new Pokemons(numb);
     if(battleStart == false){
@@ -66,6 +69,7 @@ PImage overWorld;
   }
   
     public void draw(){
+      x = new Red(xCor,yCor,false);
       if (isBattle){
         if(mousePressed){
       System.out.println(starter.getTable());
@@ -101,9 +105,18 @@ PImage overWorld;
     }
       enemy();
       }
-      else{
+      else if (isHouseOne){
+        background(0);
+        x.setInHouse(true);
+        pushMatrix();
+        translate(width / 2,height / 2);
+        translate(x.getX()*-1-(16/2),x.getY()*-1-(16/2));
+        image(middleHouse,0,0);
+        x.display(direction);
+        popMatrix();
+      }
+        else{
          background(0);
-         x = new Red(xCor,yCor);
          pushMatrix();
          translate(width / 2,height / 2);
          scale(2.5);
@@ -232,7 +245,7 @@ PImage overWorld;
     else {
       if (key == 'x'){
         if (isHouse() && characterDirection == 2){
-        rect(330,385,100,50);
+          isHouseOne = true;
         }
       }
           if(keyCode == UP){
@@ -254,6 +267,10 @@ PImage overWorld;
               characterDirection = 2;
             }
             }
+            else if (isHouseOne){
+                yCor -= 32;
+            }
+          
             else {
               characterDirection = 2;
             }

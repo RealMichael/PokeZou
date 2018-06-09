@@ -5,10 +5,12 @@ public class Red{
   int current;
   PImage[] Sprites;
   PImage test;
-  public Red(float x,float y){
+  boolean inHouse;
+  public Red(float x,float y,boolean inHouse){
     int xNum = 4;
     int yNum = 4;
     int total = xNum * yNum;
+    this.inHouse = inHouse;
     Sprites = new PImage[total];
     PImage spriteSheet = loadImage("Images/sprites.png");
     int spriteWidth = spriteSheet.width / xNum;
@@ -23,6 +25,10 @@ public class Red{
     }
     this.x = x;
     this.y = y;
+  }
+  
+  public void setInHouse(boolean b){
+    inHouse = b;
   }
   
   public void setX(int x){
@@ -66,8 +72,16 @@ public class Red{
   }
     
   public void display(int d){
+        if (inHouse){
+      Sprites[d].resize(80,80);
+      image(Sprites[d],x,y);
+      x = round(x);
+      y = round(y);
+    }
+    else {
     image(Sprites[d],x,y);
     x = round(x);
     y = round(y);
+  }
   }
 }
