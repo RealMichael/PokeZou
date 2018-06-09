@@ -2,6 +2,7 @@ float yCor = 320;
 //float down = 150;
 float xCor = 320;
 //float left = 300;
+boolean firstEnter;
 Red x;
 Pokemons b;
 walls[] w = new walls[0];
@@ -11,7 +12,7 @@ house[] h = new house[0];
 walls[] middleHouseWall = new walls[0];
 NPC middleHouseNpc;
 house middleHouseExit;
-boolean isHouseOne;
+boolean isHouseOne = false;
 int direction;
 int leftOrRight = 0;
 int characterDirection;
@@ -53,7 +54,7 @@ PImage overWorld;
     fileReading();
     image = loadImage("Images/Battlefield2.png");
     middleHouse = loadImage("Images/houseOne.png");
-    middleHouse.resize(704,576);
+    middleHouse.resize(768,640);
     starter = new Pokemons(24);
     wild = new Pokemons(numb);
     if(battleStart == false){
@@ -70,6 +71,11 @@ PImage overWorld;
   
     public void draw(){
       x = new Red(xCor,yCor,false);
+      if (isHouseOne && firstEnter){
+        xCor = 32 * 8;
+        yCor = 32 * 14;
+        firstEnter = false;
+      }
       if (isBattle){
         if(mousePressed){
       System.out.println(starter.getTable());
@@ -161,13 +167,13 @@ PImage overWorld;
       for (int i = 0;i < houseOne.length;i++){
         tempFive = split(houseOne[i],",");
         if (tempFive[0].equals("1")){
-          middleHouseWall = (walls[]) append(middleHouseWall,new walls(float(tempFive[1]) * 16,float(tempFive[2]) * 16));
+          middleHouseWall = (walls[]) append(middleHouseWall,new walls(float(tempFive[1]) * 32,float(tempFive[2]) * 32));
         }
         else if (tempFive[0].equals("2")){
-          middleHouseNpc = new NPC(float(tempFive[1]) * 16,float(tempFive[2]) * 16);
+          middleHouseNpc = new NPC(float(tempFive[1]) * 32,float(tempFive[2]) * 32);
         }
         else if (tempFive[0].equals("4")){
-          middleHouseExit = new house(float(tempFive[1]) * 16,float(tempFive[2]) * 16,1);
+          middleHouseExit = new house(float(tempFive[1]) * 32,float(tempFive[2]) * 32,1);
         }
       }
     }
@@ -185,7 +191,7 @@ PImage overWorld;
   
   boolean HouseOneCollision(int direction){
     for (int i = 0;i < middleHouseWall.length;i++){
-      if (middleHouseWall[i].checkWall(x.getX(),x.getY(),direction)){
+      if (middleHouseWall[i].checkWallHouse(x.getX(),x.getY(),direction)){
         return true;
       }
     }
@@ -246,9 +252,11 @@ PImage overWorld;
       if (key == 'x'){
         if (isHouse() && characterDirection == 2){
           isHouseOne = true;
+          firstEnter = true;
         }
       }
           if(keyCode == UP){
+            if(!isHouseOne){
             if (!collisionWalls(2) && !collisionNPC(2)){
             int r = (int)(Math.random() * 100);
             if (isInGrass && r < 10){
@@ -267,15 +275,27 @@ PImage overWorld;
               characterDirection = 2;
             }
             }
-            else if (isHouseOne){
-                yCor -= 32;
             }
-          
+            else if (isHouseOne){
+              if (!HouseOneCollision(2)){
+                if (leftOrRight == 0){
+                direction = 13;
+                leftOrRight = 1;
+              }
+              else {
+                direction = 15;
+                leftOrRight = 0;
+              }
+              yCor -= 32;
+              }
+              characterDirection = 2;
+            }
             else {
               characterDirection = 2;
             }
           }
           else if(keyCode == DOWN){
+            if(!isHouseOne){
             if(!collisionWalls(0) && !collisionNPC(0)){
             int r = (int)(Math.random() * 100);
             if (isInGrass && r < 10){
@@ -295,11 +315,27 @@ PImage overWorld;
                 characterDirection = 0;
             }
             }
+            }
+            else if (isHouseOne){
+              if (!HouseOneCollision(0)){
+                 if (leftOrRight == 0){
+                direction = 1;
+                leftOrRight = 1;
+              }
+              else {
+                direction = 3;
+                leftOrRight = 0;
+              }
+                yCor += 32;
+              }
+              characterDirection = 0;
+              }
             else {
               characterDirection = 0;
             }
           }
           else if(keyCode == RIGHT ){
+            if (!isHouseOne){
             if (!collisionWalls(3) && !collisionNPC(3)){
             int r = (int)(Math.random() * 100);
             if (isInGrass && r < 10){
@@ -320,11 +356,27 @@ PImage overWorld;
                 characterDirection = 3;
             }
             }
+            }
+            else if (isHouseOne){
+              if (!HouseOneCollision(3)){
+                if (leftOrRight == 0){
+                direction = 9;
+                leftOrRight = 1; 
+              }
+              else {
+                direction = 11;
+                leftOrRight = 0;
+              }
+                xCor += 32;
+                characterDirection = 3;
+              }
+              }
             else {
               characterDirection = 3;
             }
           }
           else if(keyCode == LEFT){
+            if (!isHouseOne){
             if(!collisionWalls(1) && !collisionNPC(1)){
             int r = (int)(Math.random() * 100);
             if (isInGrass && r < 10){
@@ -343,9 +395,24 @@ PImage overWorld;
                 characterDirection = 1;
             }
           }
+            }
+          else if (isHouseOne){
+            if (!HouseOneCollision(1)){
+              if (leftOrRight == 0){
+                direction = 5;
+                leftOrRight = 1;
+              }
+              else {
+                direction = 7;
+                leftOrRight = 0;
+              }
+                xCor -= 32;
+                characterDirection = 1;
+            }
           }else {
               characterDirection = 1;
             }
+          }
     }
   }
   

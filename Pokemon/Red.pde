@@ -73,7 +73,7 @@ public class Red{
     
   public void display(int d){
         if (inHouse){
-      Sprites[d].resize(80,80);
+      Sprites[d].resize(48,48);
       image(Sprites[d],x,y);
       x = round(x);
       y = round(y);

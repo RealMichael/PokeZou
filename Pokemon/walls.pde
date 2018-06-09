@@ -6,6 +6,35 @@ public class walls{
     yCor = y;
   }
   
+  public boolean checkWallHouse(float x,float y,int direction){
+    //2 up, 1 left, 0 down, 3 right
+    if (direction == 0){
+      if (yCor == (y + 32) && x == xCor){
+        return true;
+      }
+      return false;
+    }
+    else if (direction == 1){
+      if (y == yCor && x == (xCor + 32)){
+        return true;
+      }
+      return false;
+    }
+    else if (direction == 2){
+      if (y == (yCor + 32) && xCor == x){
+        return true;
+      }
+      return false;
+    }
+    else if (direction == 3){
+      if (xCor == (x + 32) && yCor == y){
+        return true;
+      }
+      return false;
+    }
+    return false;
+  }
+  
   public boolean checkWall(float x,float y,int direction){
     //2 up, 1 left, 0 down, 3 right
     if (direction == 0){
