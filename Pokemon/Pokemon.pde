@@ -8,6 +8,10 @@ walls[] w = new walls[0];
 NPC[] n = new NPC[0];
 Grass[] g = new Grass[0];
 house[] h = new house[0];
+walls[] middleHouseWall = new walls[0];
+NPC middleHouseNpc;
+house middleHouseExit;
+boolean isHouseOne;
 int direction;
 int leftOrRight = 0;
 int characterDirection;
@@ -136,7 +140,22 @@ PImage overWorld;
       for (int i = 0;i < house.length;i++){
         tempFour = split(house[i],",");
         h = (house[]) append(h,new house(float(tempFour[1]) * 16,float(tempFour[2]) * 16,i)); 
-        // first house is pokecenter,second is the middle house, third is the top most house 
+        // first house is pokecenter,second is the middle house, third is the top most house
+        //0 is pokecenter, 1 is middle house, 2 is top most house
+      }
+      String[] houseOne = loadStrings("houseOne.txt");
+      String[] tempFive = new String[0];
+      for (int i = 0;i < houseOne.length;i++){
+        tempFive = split(houseOne[i],",");
+        if (tempFive[0].equals("1")){
+          middleHouseWall = (walls[]) append(middleHouseWall,new walls(float(tempFive[1]) * 16,float(tempFive[2]) * 16));
+        }
+        else if (tempFive[0].equals("2")){
+          middleHouseNpc = new NPC(float(tempFive[1]) * 16,float(tempFive[2]) * 16);
+        }
+        else if (tempFive[0].equals("4")){
+          middleHouseExit = new house(float(tempFive[1]) * 16,float(tempFive[2]) * 16,1);
+        }
       }
     }
     
@@ -150,6 +169,21 @@ PImage overWorld;
         n[i].display(p);
       }
     }
+  
+  boolean HouseOneCollision(int direction){
+    for (int i = 0;i < middleHouseWall.length;i++){
+      if (middleHouseWall[i].checkWall(x.getX(),x.getY(),direction)){
+        return true;
+      }
+    }
+    if (middleHouseNpc.checkNpc(x.getX(),x.getY(),direction)){
+      return true;
+    }
+    if (middleHouseExit.isHouse(x.getX(),x.getY(),0)){
+      return true;
+    }
+    return false;
+  }
 
   boolean collisionWalls(int direction){
     for (int i = 0;i < w.length;i ++){
@@ -196,8 +230,10 @@ PImage overWorld;
     if (isBattle){
     }
     else {
-      if (key == 'x' && isHouse() && characterDirection == 2){
+      if (key == 'x'){
+        if (isHouse() && characterDirection == 2){
         rect(330,385,100,50);
+        }
       }
           if(keyCode == UP){
             if (!collisionWalls(2) && !collisionNPC(2)){
@@ -222,7 +258,8 @@ PImage overWorld;
               characterDirection = 2;
             }
           }
-          else if(keyCode == DOWN && !collisionWalls(0) && !collisionNPC(0)){
+          else if(keyCode == DOWN){
+            if(!collisionWalls(0) && !collisionNPC(0)){
             int r = (int)(Math.random() * 100);
             if (isInGrass && r < 10){
               isBattle = true;
@@ -240,8 +277,13 @@ PImage overWorld;
                 yCor += 16;
                 characterDirection = 0;
             }
+            }
+            else {
+              characterDirection = 0;
+            }
           }
-          else if(keyCode == RIGHT && !collisionWalls(3) && !collisionNPC(3)){
+          else if(keyCode == RIGHT ){
+            if (!collisionWalls(3) && !collisionNPC(3)){
             int r = (int)(Math.random() * 100);
             if (isInGrass && r < 10){
               isBattle = true;
@@ -260,8 +302,13 @@ PImage overWorld;
                 xCor += 16;
                 characterDirection = 3;
             }
+            }
+            else {
+              characterDirection = 3;
+            }
           }
-          else if(keyCode == LEFT && !collisionWalls(1) && !collisionNPC(1)){
+          else if(keyCode == LEFT){
+            if(!collisionWalls(1) && !collisionNPC(1)){
             int r = (int)(Math.random() * 100);
             if (isInGrass && r < 10){
               isBattle = true;
@@ -279,6 +326,9 @@ PImage overWorld;
                 characterDirection = 1;
             }
           }
+          }else {
+              characterDirection = 1;
+            }
     }
   }
   
