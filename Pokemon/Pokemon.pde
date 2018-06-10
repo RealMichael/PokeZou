@@ -138,6 +138,7 @@ PImage overWorld;
         translate(x.getX()*-1-(16/2),x.getY()*-1-(16/2));
         image(middleHouse,0,0);
         x.display(direction);
+        middleHouseNpc.displayHouseNpc(1);
         popMatrix();
       }
       else if (isHouseTwo){
@@ -148,6 +149,7 @@ PImage overWorld;
         translate(x.getX()*-1-(16/2),x.getY()*-1-(16/2));
         image(topHouse,0,0);
         x.display(direction);
+        topHouseNpc.displayHouseNpc(2);
         popMatrix();
       }
         else{
@@ -237,7 +239,7 @@ PImage overWorld;
         return true;
       }
     }
-    if (middleHouseNpc.checkNpc(x.getX(),x.getY(),direction)){
+    if (middleHouseNpc.checkHouseNpc(x.getX(),x.getY(),direction)){
       return true;
     }
     for (int c = 0;c < middleHouseExit.length;c++){
@@ -254,7 +256,7 @@ PImage overWorld;
         return true;
       }
     }
-    if (topHouseNpc.checkNpc(x.getX(),x.getY(),direction)){
+    if (topHouseNpc.checkHouseNpc(x.getX(),x.getY(),direction)){
       return true;
     }
     for (int c = 0;c < topHouseExit.length;c++){
