@@ -334,7 +334,7 @@ PImage overWorld;
   }
   
   boolean collisionBossNPC(int direction){
-    if (topHouseNpc.checkNpc(x.getX(),x.getY(),direction)){
+    if (topHouseNpc.checkHouseNpc(x.getX(),x.getY(),direction)){
      return true;
     }
     return false;
