@@ -4,6 +4,8 @@ public class NPC{
   PImage specialSprite;
   String dialogue;
   float xCor,yCor;
+  PImage[] giovani;
+  PImage[] doctor;
   public NPC(float x,float y){
     int widthNum = 7;
     int heightNum = 6;
@@ -19,6 +21,28 @@ public class NPC{
           sprites[index].resize(16,16);
           index++;
       }    
+    }
+    PImage gBoi = loadImage("Images/giovani.png");
+    int gWidth = gBoi.width / 4;
+    int gHeight = gBoi.height / 4;
+    int b = 0;
+    for (int i = 0; i < 4;i++){
+      for (int c = 0; c < 4;c++){
+        giovani[b] = gBoi.get(c * gWidth,i * gHeight,gWidth,gHeight);
+        giovani[b].resize(16,16);
+        index ++;
+      }
+    }
+    PImage dBoi = loadImage("Images/doctor.png");
+    int dWidth = dBoi.width / 12;
+    int dHeight = dBoi.height / 1;
+    int d = 0;
+    for (int i = 0;i < 1;i++){
+      for (int c = 0;c < 12;c++){
+        doctor[d] = dBoi.get(c * dWidth,i * dHeight,dWidth,dHeight);
+        doctor[d].resize(16,16);
+        index++;
+      }
     }
      xCor = x;
      yCor = y;
@@ -55,6 +79,15 @@ public class NPC{
       return false;
     }
     return false;
+  }
+  
+  void displayHouseNpc(int b){
+    if (b == 2){
+      image(giovani[0],xCor,yCor);
+    }
+    else if (b == 1){
+      image(doctor[0],xCor,yCor);
+    }
   }
   
   void display(PImage s){
