@@ -21,7 +21,7 @@ New Features since Demo
 8.  There are now NPCs on the map instead of lazy snorlaxes.
 9.  You can now encounter wild pokemon in the grass.
 10. You can try to run from a battle but you will be taken to the battle combat screen if you fail to run away.(Forcing you to fight)
-  
+11. YOu can talk to NPCS
 Features
 1. The battle and Map files are now connected meaning that we succesfully combined our code.
 2. Battle mode now displays how much damage the starter pokemon does.
@@ -42,4 +42,4 @@ Features
 16. There is a big map where ASH will always be centered meaning that the camera view will follow him.
 17. There is collision in the big map meaning that you cannot go outside the map.
 18. The central character shifts between right and left feet to give a realistic feeling of the character actually walking.
-  
+19. You can talk to NPCs
