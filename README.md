@@ -22,6 +22,7 @@ New Features since Demo
 9.  You can now encounter wild pokemon in the grass.
 10. You can try to run from a battle but you will be taken to the battle combat screen if you fail to run away.(Forcing you to fight)
 11. YOu can talk to NPCS
+
 Features
 1. The battle and Map files are now connected meaning that we succesfully combined our code.
 2. Battle mode now displays how much damage the starter pokemon does.
