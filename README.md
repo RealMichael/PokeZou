@@ -14,7 +14,7 @@ New Features since Demo
 2. Battle mode now displays how much damage the starter pokemon does.
 3. There is now a defeat or victory screen depending on whether or not you lose/win the battle.
 4. Certain pokemons will be super effective and not very effective aganist other pokemons such as thunder types being super effective aganist water types.
-5. There is now a boss mode where you can talk to the gym master NPC and battle him, you will have a pikachu with 8000 health to battle six randomly chosen pokemon used by the gym master.
+5. There is now a boss mode where you can talk to the gym master NPC and battle him, you will battle six randomly chosen pokemon used by the gym master.
 6.  You can now go into some of the houses in the map.
 7.  The houses have collision which means you can't go through it.
 8.  Once you enter a house, its an entirely different screen.
