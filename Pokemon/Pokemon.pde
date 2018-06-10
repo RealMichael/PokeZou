@@ -20,6 +20,7 @@ house[] topHouseExit = new house[0];
 boolean isHouseOne = false;
 boolean isHouseTwo = false;
 boolean isPokeCenter = false;
+boolean isConversation;
 int direction;
 int leftOrRight = 0;
 int characterDirection;
@@ -163,6 +164,11 @@ PImage overWorld;
          npcDisplay();
          inGrass();
          popMatrix();
+         rect(0,500,768,200);
+         fill(0);
+         textSize(32);
+         text("word woeoqweoqwoewqoqeoqwoweoqeoweo",10,550);
+          fill(0, 102, 153, 204);
       }
     }
     
@@ -321,6 +327,13 @@ PImage overWorld;
     return false;
   }
   
+  boolean collisionBossNPC(int direction){
+    if (topHouseNpc.checkNpc(x.getX(),x.getY(),direction)){
+     return true;
+    }
+    return false;
+  }
+  
   void inGrass(){
    for (int i = 0;i < g.length;i++){
      if(g[i].checkGrass(x.getX(),x.getY())){
@@ -333,7 +346,7 @@ PImage overWorld;
   
   void keyPressed(){
     if (key == 'b'){
-      //isBattle = true;
+      isBattle = true;
       isBoss = true;
     }
     if (isBattle){
@@ -357,6 +370,10 @@ PImage overWorld;
           isHouseTwo = false;
           xCor = exitXCor;
           yCor = exitYCor;
+        }
+        else if (isHouseTwo && (collisionBossNPC(0) || collisionBossNPC(1) || collisionBossNPC(2) || collisionBossNPC(3))){
+          isBattle = true;
+          isBoss = true;
         }
       }
           if(keyCode == UP){
