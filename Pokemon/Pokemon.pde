@@ -17,10 +17,12 @@ house[] middleHouseExit = new house[0];
 walls[] topHouseWall = new walls[0];
 NPC topHouseNpc;
 house[] topHouseExit = new house[0];
+String npcTalk;
 boolean isHouseOne = false;
 boolean isHouseTwo = false;
 boolean isPokeCenter = false;
-boolean isConversation;
+boolean isConversation = false;
+boolean endConvo;
 int direction;
 int leftOrRight = 0;
 int characterDirection;
@@ -170,11 +172,13 @@ PImage overWorld;
          npcDisplay();
          inGrass();
          popMatrix();
-         rect(0,500,768,200);
-         fill(0);
-         textSize(32);
-         text("word woeoqweoqwoewqoqeoqwoweoqeoweo",10,550);
+         if (isConversation){
+           rect(0,500,768,200);
+           fill(0);
+           textSize(32);
+           text(npcTalk,10,550);
           fill(0, 102, 153, 204);
+         }
       }
     }
     
@@ -188,8 +192,8 @@ PImage overWorld;
       String[] NPC = loadStrings("npc.txt");
       String[] tempTwo = new String[0];
       for (int i = 0;i < NPC.length;i++){
-        tempTwo = split(NPC[i],",");
-        n = (NPC[]) append(n,new NPC(float(tempTwo[1]) * 16,float(tempTwo[2]) * 16));
+        tempTwo = split(NPC[i],"/");
+        n = (NPC[]) append(n,new NPC(float(tempTwo[1]) * 16,float(tempTwo[2]) * 16,(String)tempTwo[3]));
       }
       String[] grass = loadStrings("grass.txt");
       String[] tempThree = new String[0];
@@ -215,7 +219,7 @@ PImage overWorld;
           middleHouseWall = (walls[]) append(middleHouseWall,new walls(float(tempFive[1]) * 32,float(tempFive[2]) * 32));
         }
         else if (tempFive[0].equals("2")){
-          middleHouseNpc = new NPC(float(tempFive[1]) * 32,float(tempFive[2]) * 32);
+          middleHouseNpc = new NPC(float(tempFive[1]) * 32,float(tempFive[2]) * 32,"Hi,I'm a doctor.");
         }
         else if (tempFive[0].equals("4")){
           middleHouseExit = (house[]) append(middleHouseExit,new house(float(tempFive[1]) * 32,float(tempFive[2]) * 32,1));
@@ -227,7 +231,7 @@ PImage overWorld;
           topHouseWall = (walls[]) append(topHouseWall,new walls(float(tempSix[1]) * 32,float(tempSix[2]) * 32));
         }
         else if (tempSix[0].equals("2")){
-          topHouseNpc = new NPC(float(tempSix[1]) * 32,float(tempSix[2]) * 32);
+          topHouseNpc = new NPC(float(tempSix[1]) * 32,float(tempSix[2]) * 32,"Challenge me? I will make you regret this decision.");
         }
         else if (tempSix[0].equals("4")){
           topHouseExit = (house[]) append(topHouseExit,new house(float(tempSix[1]) * 32,float(tempSix[2]) * 32,2));
@@ -333,6 +337,15 @@ PImage overWorld;
     return false;
   }
   
+  String dialogueNPC(int direction){
+    for (int i = 0;i < n.length;i++){
+      if (n[i].checkNpc(x.getX(),x.getY(),direction)){
+        return n[i].getDialogue();
+      }
+    }
+    return "";
+  }
+  
   boolean collisionBossNPC(int direction){
     if (topHouseNpc.checkHouseNpc(x.getX(),x.getY(),direction)){
      return true;
@@ -351,10 +364,6 @@ PImage overWorld;
   }
   
   void keyPressed(){
-    if (key == 'b'){
-      isBattle = true;
-      isBoss = true;
-    }
     if (isBattle){
     }
     else {
@@ -378,8 +387,36 @@ PImage overWorld;
           yCor = exitYCor;
         }
         else if (isHouseTwo && (collisionBossNPC(0) || collisionBossNPC(1) || collisionBossNPC(2) || collisionBossNPC(3))){
-          isBattle = true;
-          isBoss = true;
+          isConversation = true;
+          if (key == 'x'){
+            
+            isConversation = false;
+            isBattle = true;
+            isBoss = true;
+          }
+        }
+      }
+      if (key == 'x'){
+        if (!isConversation){
+          if (collisionNPC(0)){
+            npcTalk = dialogueNPC(0);
+            isConversation = true;
+          }
+          else if (collisionNPC(1)){
+              npcTalk = dialogueNPC(1);
+              isConversation = true;
+          }
+          else if (collisionNPC(2)){
+             npcTalk = dialogueNPC(2);
+             isConversation = true;
+          }
+          else if (collisionNPC(3)){
+              npcTalk = dialogueNPC(3);
+              isConversation = true;
+          }
+        }
+        else {
+          isConversation = false;
         }
       }
           if(keyCode == UP){

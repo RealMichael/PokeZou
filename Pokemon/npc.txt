@@ -1,8 +1,8 @@
-2,8,5
-2,8,26
-2,8,27
-2,9,26
-2,9,27
-2,21,1
-2,31,21
-2,36,11
+2/8/5/I'm not moving, go the other way!
+2/8/26/Shhh,He's sleeping.
+2/8/27/Shhh,He's sleeping.
+2/9/26/Shhh,He's sleeping.
+2/9/27/Shhh,He's sleeping.
+2/21/1/I have been trapped in town for 20 years already, these rocks just won't move.
+2/31/21/The boss is somewhere in the town
+2/36/11/Hi

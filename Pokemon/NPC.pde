@@ -6,7 +6,8 @@ public class NPC{
   float xCor,yCor;
   PImage[] giovani;
   PImage[] doctor;
-  public NPC(float x,float y){
+  public NPC(float x,float y,String word){
+    dialogue = word;
     int widthNum = 7;
     int heightNum = 6;
     int total = widthNum * heightNum;
@@ -52,6 +53,10 @@ public class NPC{
   
   PImage getSprite(int b){
     return sprites[b];
+  }
+  
+  String getDialogue(){
+    return dialogue;
   }
   
   public boolean checkHouseNpc(float x,float y,int direction){
