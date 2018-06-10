@@ -79,6 +79,7 @@ PImage overWorld;
 }
   }
   
+  
     public void draw(){
       x = new Red(xCor,yCor,false);
       if (isHouseOne && firstEnter){
@@ -108,9 +109,14 @@ PImage overWorld;
     if(setHealth){
     if(isBoss){
         starter.setHealth(8000);
+        setHealth = false;
       }
-      setHealth = false;
     }
+      
+    //}
+    //else{
+    //  starter.setHealth(8000);
+    //}
     if(starterDisplay){
        starter.displayBack(50,250);
        fill(0);
@@ -333,7 +339,7 @@ PImage overWorld;
   
   void keyPressed(){
     if (key == 'b'){
-      //isBattle = true;
+      isBattle = true;
       isBoss = true;
     }
     if (isBattle){
