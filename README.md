@@ -39,5 +39,7 @@ Features
 13. In battle mode, you can see the images of the starter and enemy pokemon
 14. In battle mode, you will take turns choosing moves to attack/heal with the enemy pokemon.
 15. You can try to run from a battle but you will be taken to the battle combat screen if you fail to run away.(Forcing you to fight)
-16.
+16. There is a big map where ASH will always be centered meaning that the camera view will follow him.
+17. There is collision in the big map meaning that you cannot go outside the map.
+18. The central character shifts between right and left feet to give a realistic feeling of the character actually walking.
   
