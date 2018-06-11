@@ -23,6 +23,7 @@ boolean isHouseTwo = false;
 boolean isPokeCenter = false;
 boolean isConversation = false;
 boolean afterBattle = false;
+boolean isConversationBoss;
 int direction;
 int leftOrRight = 0;
 int characterDirection;
@@ -156,6 +157,13 @@ PImage overWorld;
            text(npcTalk,10,550);
           fill(0, 102, 153, 204);
         }
+        else if (isConversationDoctor && afterBattle){
+          rect(380,550,width,200);
+           fill(0);
+           textSize(32);
+           text(npcTalk,150,550);
+           fill(0,102,153,204);
+        }
       }
       else if (isHouseTwo){
         background(0);
@@ -167,6 +175,20 @@ PImage overWorld;
         x.display(direction);
         topHouseNpc.displayHouseNpc(2);
         popMatrix();
+        if (isConversationBoss && !afterBattle){
+          rect(0,500,width,200);
+           fill(0);
+           textSize(32);
+           text(npcTalk,10,550);
+          fill(0, 102, 153, 204);
+        }
+        else if (isConversationBoss && afterBattle){
+          rect(380,550,width,200);
+           fill(0);
+           textSize(32);
+           text(npcTalk,300,550);
+           fill(0,102,153,204);
+        }
       }
         else{
          if (!isConversation){
@@ -267,7 +289,7 @@ PImage overWorld;
           topHouseWall = (walls[]) append(topHouseWall,new walls(float(tempSix[1]) * 32,float(tempSix[2]) * 32));
         }
         else if (tempSix[0].equals("2")){
-          topHouseNpc = new NPC(float(tempSix[1]) * 32,float(tempSix[2]) * 32,"Challenge me? I will make you regret this decision.");
+          topHouseNpc = new NPC(float(tempSix[1]) * 32,float(tempSix[2]) * 32,"Challenge me? \n I will make you regret this decision.");
         }
         else if (tempSix[0].equals("4")){
           topHouseExit = (house[]) append(topHouseExit,new house(float(tempSix[1]) * 32,float(tempSix[2]) * 32,2));
@@ -468,6 +490,31 @@ PImage overWorld;
           }
       }
       if (key == 'x'){
+        if (isHouseTwo && !isConversationBoss){
+          if (collisionBossNPC(0)){
+            npcTalk = dialogueNPCHouse(0);
+            isConversationDoctor = true;
+          }
+          else if (collisionBossNPC(1)){
+            npcTalk = dialogueNPCHouse(1);
+            isConversationBoss = true;
+          }
+          else if (collisionBossNPC(2)){
+            npcTalk = dialogueNPCHouse(2);
+            isConversationBoss = true;
+          }
+          else if (collisionBossNPC(3)){
+            npcTalk = dialogueNPCHouse(3);
+            isConversationBoss = true;
+          }
+        }
+        else{
+            isConversationBoss = false;
+            isBattle = true;
+            isBoss = true;
+          }
+      }
+      if (key == 'x'){
         if (!isConversation){
           if (collisionNPC(0)){
             npcTalk = dialogueNPC(0);
@@ -490,7 +537,7 @@ PImage overWorld;
           isConversation = false;
         }
       }
-      if(!isConversation && !isConversationDoctor){
+      if(!isConversation && !isConversationDoctor && !isConversationBoss){
           if(keyCode == UP){
             if(!isHouseOne && !isHouseTwo){
             if (!collisionWalls(2) && !collisionNPC(2)){
