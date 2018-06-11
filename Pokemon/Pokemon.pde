@@ -26,7 +26,7 @@ boolean afterBattle = false;
 int direction;
 int leftOrRight = 0;
 int characterDirection;
-boolean isBattle,isInGrass;
+boolean isBattle,isInGrass,isConversationDoctor;
 // Battle variables
 PImage image;
 PImage middleHouse; //house 1 txt
@@ -149,6 +149,13 @@ PImage overWorld;
         x.display(direction);
         middleHouseNpc.displayHouseNpc(1);
         popMatrix();
+        if (isConversationDoctor && !afterBattle){
+          rect(0,500,width,200);
+           fill(0);
+           textSize(32);
+           text(npcTalk,10,550);
+          fill(0, 102, 153, 204);
+        }
       }
       else if (isHouseTwo){
         background(0);
@@ -375,9 +382,30 @@ PImage overWorld;
     return "";
   }
   
+  String dialogueNPCHouse(int direction){
+     if (isHouseOne){
+       if (middleHouseNpc.checkHouseNpc(x.getX(),x.getY(),direction)){
+         return middleHouseNpc.getDialogue();
+       }
+     }
+     else if (isHouseTwo){
+       if (topHouseNpc.checkHouseNpc(x.getX(),x.getY(),direction)){
+         return topHouseNpc.getDialogue();
+       }
+     }
+     return "";
+  }
+  
   boolean collisionBossNPC(int direction){
     if (topHouseNpc.checkHouseNpc(x.getX(),x.getY(),direction)){
      return true;
+    }
+    return false;
+  }
+  
+  boolean collisionDoctorNPC(int direction){
+    if (middleHouseNpc.checkHouseNpc(x.getX(),x.getY(),direction)){
+      return true;
     }
     return false;
   }
@@ -415,15 +443,29 @@ PImage overWorld;
           xCor = exitXCor;
           yCor = exitYCor;
         }
-        else if (isHouseTwo && (collisionBossNPC(0) || collisionBossNPC(1) || collisionBossNPC(2) || collisionBossNPC(3))){
-          isConversation = true;
-          if (key == 'x'){
-            
-            isConversation = false;
-            isBattle = true;
-            isBoss = true;
+      }
+      if (key == 'x'){
+        if (isHouseOne && !isConversationDoctor){
+          if (collisionDoctorNPC(0)){
+            npcTalk = dialogueNPCHouse(0);
+            isConversationDoctor = true;
+          }
+          else if (collisionDoctorNPC(1)){
+            npcTalk = dialogueNPCHouse(1);
+            isConversationDoctor = true;
+          }
+          else if (collisionDoctorNPC(2)){
+            npcTalk = dialogueNPCHouse(2);
+            isConversationDoctor = true;
+          }
+          else if (collisionDoctorNPC(3)){
+            npcTalk = dialogueNPCHouse(3);
+            isConversationDoctor = true;
           }
         }
+        else{
+            isConversationDoctor = false;
+          }
       }
       if (key == 'x'){
         if (!isConversation){
@@ -448,7 +490,7 @@ PImage overWorld;
           isConversation = false;
         }
       }
-      if(!isConversation){
+      if(!isConversation && !isConversationDoctor){
           if(keyCode == UP){
             if(!isHouseOne && !isHouseTwo){
             if (!collisionWalls(2) && !collisionNPC(2)){
