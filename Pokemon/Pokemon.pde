@@ -180,10 +180,10 @@ PImage overWorld;
           fill(0, 102, 153, 204);
          }
          else if (isConversation && afterBattle){
-           rect(430,550,width,200);
+           rect(380,550,width,200);
            fill(0);
            textSize(32);
-           text(npcTalk,100,550);
+           text(npcTalk,300,550);
            fill(0,102,153,204);
          }
       }
