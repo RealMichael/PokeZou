@@ -22,7 +22,7 @@ boolean isHouseOne = false;
 boolean isHouseTwo = false;
 boolean isPokeCenter = false;
 boolean isConversation = false;
-boolean endConvo;
+boolean afterBattle = false;
 int direction;
 int leftOrRight = 0;
 int characterDirection;
@@ -75,7 +75,7 @@ PImage overWorld;
         starter.setHealth(8000);
       }
       else{
-  starter.setHealth(healthRandP);
+         starter.setHealth(healthRandP);
       }
   wild.setHealth(healthRand);
   battleStart = true;
@@ -172,12 +172,19 @@ PImage overWorld;
          npcDisplay();
          inGrass();
          popMatrix();
-         if (isConversation){
-           rect(0,500,768,200);
+         if (isConversation && !afterBattle){
+           rect(0,500,width,200);
            fill(0);
            textSize(32);
            text(npcTalk,10,550);
           fill(0, 102, 153, 204);
+         }
+         else if (isConversation && afterBattle){
+           rect(430,550,width,200);
+           fill(0);
+           textSize(32);
+           text(npcTalk,100,550);
+           fill(0,102,153,204);
          }
       }
     }
@@ -675,7 +682,7 @@ PImage overWorld;
     battleClicked = false;
     bossCounter = 0;
     setHealth = true;
-    
+    afterBattle = true;
   }
   
   public void setup2(){
