@@ -508,7 +508,7 @@ PImage overWorld;
             isConversationBoss = true;
           }
         }
-        else{
+        else if (isHouseTwo){
             isConversationBoss = false;
             isBattle = true;
             isBoss = true;

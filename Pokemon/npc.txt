@@ -3,6 +3,8 @@
 2/8/27/Shhh,He's sleeping.
 2/9/26/Shhh,He's sleeping.
 2/9/27/Shhh,He's sleeping.
-2/21/1/I have been trapped in town for 20 years already, these rocks just won't move.
-2/31/21/The boss is somewhere in the town
-2/36/11/Hi
+2/21/1/I'm trapped
+2/31/21/Press x to interact with houses
+2/36/11/The boss is somewhere in the town
+4/26/26/Nurse Joy is not here.
+2/36/19/Shop guy also not here
