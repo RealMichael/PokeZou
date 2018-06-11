@@ -162,6 +162,7 @@ PImage overWorld;
         popMatrix();
       }
         else{
+         if (!isConversation){
          background(0);
          pushMatrix();
          translate(width / 2,height / 2);
@@ -172,7 +173,18 @@ PImage overWorld;
          npcDisplay();
          inGrass();
          popMatrix();
-         if (isConversation && !afterBattle){
+         }
+         else if (isConversation && !afterBattle){
+           background(0);
+         pushMatrix();
+         translate(width / 2,height / 2);
+         scale(2.5);
+         translate(x.getX()*-1-(16/2),x.getY()*-1-(16/2));
+         image(overWorld,0,0);
+         x.display(direction);
+         npcDisplay();
+         inGrass();
+         popMatrix();
            rect(0,500,width,200);
            fill(0);
            textSize(32);
@@ -180,6 +192,16 @@ PImage overWorld;
           fill(0, 102, 153, 204);
          }
          else if (isConversation && afterBattle){
+           background(0);
+         pushMatrix();
+         translate(width / 2,height / 2);
+         scale(2.5);
+         translate(x.getX()*-1-(16/2),x.getY()*-1-(16/2));
+         image(overWorld,0,0);
+         x.display(direction);
+         npcDisplay();
+         inGrass();
+         popMatrix();
            rect(380,550,width,200);
            fill(0);
            textSize(32);
@@ -426,6 +448,7 @@ PImage overWorld;
           isConversation = false;
         }
       }
+      if(!isConversation){
           if(keyCode == UP){
             if(!isHouseOne && !isHouseTwo){
             if (!collisionWalls(2) && !collisionNPC(2)){
@@ -645,6 +668,7 @@ PImage overWorld;
               characterDirection = 1;
             }
           }
+    }
     }
   }
   
